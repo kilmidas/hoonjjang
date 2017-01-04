@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/*_placeholders.scss */
+
+//clearfix
+%clearfix {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+//background img 
+%sp_movie_gnb {
+	background-image: url($G-path-img + 'sp_movie_gnb_1604.png');
+	background-repeat: no-repeat;
+	background-size: 300px 200px;	
+}
+
+%ico_arr {
+	background-image: url($G-path-img + 'ico_arr_v2.png');
+	background-repeat: no-repeat;
+	background-size: 3px 5px;
+}
+
+%sp_ico {
+	background-image: url($G-path-img + 'sp_ico_mv_1605.png');
+	background-repeat: no-repeat;
+	background-size: 30px 750px;	
+	vertical-align: top;
+}
+
+%sp_movie {
+	background-image: url($G-path-img + 'sp_movie_end_1410.png');
+	background-repeat: no-repeat;
+	background-size: 250px 350px;	
+}
+
+%sp_spi {
+	background-image: url($G-path-img + 'sp_spi.png');
+	background-repeat: no-repeat;
+	background-size: 250px 265px;	
+	vertical-align: top;
+}
+
+%sp_rank {
+	background-image: url($G-path-img + 'ico_sp_rank.png');
+	background-repeat: no-repeat;		
+}
+
+%u_pg3 {
+	background-image: url($G-path-img + 'u_pg3.png');
+	background-repeat: no-repeat;
+}
+
+%img_bt {
+	background-image: url($G-path-img + 'bt.gif');
+	background-repeat: repeat-x;
+}
+
+%sp_sel2ib {
+	background-image: url($G-path-img + 'sel2ib.png');
+	background-repeat: no-repeat;
+}
+
+%img_bu_lk {
+	background-image: url($G-path-img + 'bu_lk.gif');
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+

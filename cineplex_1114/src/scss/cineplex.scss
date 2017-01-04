@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* NHN Technology Services UI Developent Team KSH 161114  */
+
+@import 'common/variables';
+@import 'common/placeholders';
+@import 'common/mixins';
+@import 'common/base';
+
+@import 'import/cineplex_common';
+@import 'import/cineplex_current_movie_contents';
+@import 'import/cineplex_runnung_group_contents';
+@import 'import/cineplex_seat_reservation_naver';

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>Major Cineplex+: 영화 예매 시간표</title>
+	<link rel="stylesheet" href="./css/cineplex.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//관람 일자 on 처리
+			$('.select_box .btn').on('click', function(e){
+				e.preventDefault();
+				$(this).parent().parent().toggleClass('on');
+
+				if($(this).parent().parent().hasClass('on')){
+					$('.select_list').css('display', 'block');
+				} else{
+					$('.select_list').css('display','none');
+				};
+			});
+
+			//영화 인기 검색어 탭 
+			$('.pop_search_wrap .tab > li').on('click', function(e){
+				e.preventDefault();
+				$(this).removeClass('on');
+				$(this).siblings().addClass('on');
+				if($(this).hasClass('movie')){
+					$('.pop_search.movie').show();
+					$('.pop_search.people').hide();
+				}else {
+					$('.pop_search.movie').hide();
+					$('.pop_search.people').show();
+				};
+			});
+
+			//맨 위로 버튼
+			$('.top_move_wrap .link').on('click', function(e){
+				e.preventDefault();
+				$('html body').scrollTop(0);
+			});
+
+		})
+	</script>
+</head>
+<body>
+<!-- 본문 바로가기 -->
+<div class="u_skip"><a href="#content">본문 바로가기</a></div>
+<!-- //본문 바로가기 -->
+
+
+<!-- header -->
+<header>
+	<div class="prev_wrap"><a href="#" class="link"><span class="prev blind">이전</span></a>
+	</div>
+	<h1 class="title_wrap"><a href="#" class="link">신비한 동물사전</a></h1>
+</header>
+<!-- //header -->
+
+<!-- content -->
+<div class="content" id="content">
+
+<!-- 위치 설정 -->
+<div class="set_location">
+	설정위치 <strong>종로1.2.3.4가동</strong>
+	<div class="btn_wrap">
+		<button type="button" class="btn my_location" onclick="" role="button"><span class="ico_location">내위치</span></button>
+		<button type="button" class="btn change_location" onclick="" role="button">변경</button>
+	</div>
+</div>
+<!-- //위치 설정 -->
+
+<!-- 관람 일자 선택 -->
+<div class="day_select_wrap" role="combobox">
+	<h2 class="blind" id="day_select_label">관람일</h2>
+	<div class="select_box">
+		<button type="button" class="btn" title="검색옵션" aria-labelledby="day_select_label" aria-autocomplete="inline">
+			<span class="txt_wrap"><span class="txt">2016년11월21일 (월)</span></span>
+		</button>
+	</div>
+</div>
+<!-- //관람 일자 선택 -->
+
+<!-- 관람 일자 셀렉트 박스 목록 레이어 -->
+<div class="day_select_list_wrap">
+	<div class="select_list" style="display: none;">
+		<h3 class="blind">자동완성</h3>
+		<ul role="listbox">
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월21일 (월)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월22일 (화)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월23일 (수)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월24일 (목)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월25일 (금)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월26일 (토)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월27일 (일)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월28일 (월)</span>
+				</a>
+			</li>
+			<li class="item" role="option">
+				<a href="#" class="link">
+					<span class="day_txt">2016년11월29일 (화)</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- //관람 일자 셀렉트 박스 목록 레이어 -->
+
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<!-- [D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+<div class="timetable_wrap">
+	<a href="#" class="link area">
+		<strong class="area_txt">롯데시네마 에비뉴엘(명동)</strong> <em class="distance">0.7km</em>
+		<span class="more">더보기</span>
+	</a> 
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>
+	<!-- [D] 상영관이 2개 이상일 경우 timetable 추가 -->
+	<div class="timetable">
+		<p class="title">신비한 동물사전</p>
+		<ul class="list">
+			<li class="item">10:00</li>
+			<li class="item">11:10</li>
+			<li class="item">12:30</li>
+			<li class="item">13:40</li>
+			<li class="item">15:00</li>
+			<li class="item">16:15</li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">17:35</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">18:50</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">20:10</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">21:25</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">22:45</a></li>
+			<li class="item"><a href="#" onclick="" class="link" role="button">24:00</a></li>
+		</ul>
+	</div>	
+</div>
+<!-- //[D] 영화관별 관람 일자 목록(n개 추가 가능) -->
+
+
+</div>
+<!-- //content -->
+
+
+<!-- 영화 인기 검색 -->
+<div class="pop_search_wrap">
+	<!-- [D] on클래스로 활성 비활성화 컨트롤 -->
+	<ul class="tab" role="tablist">
+		<li class="item movie"><a href="#" class="link" id="movie" role="tab" aria-selected="true">영화 인기 검색어</a></li>
+		<li class="item people on"><a href="#" class="link" id="people" role="tab" aria-selected="false">영화인 인기 검색어</a></li>
+	</ul>
+	<!-- [D] 영화 인기 검색어 -->
+	<div class="pop_search movie" role="tabpanel" aria-labelledby="movie" aria-expanded="true">
+		<ol class="list">
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=125459" class="link">
+				<div class="rank_txt"><span class="rank_num">1</span>닥터 스트레인지</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=146512" class="link">
+				<div class="rank_txt"><span class="rank_num">2</span>스플릿</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=152183" class="link">
+				<div class="rank_txt"><span class="rank_num">3</span>무현, 두 도시 이야기</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=140695" class="link">
+				<div class="rank_txt"><span class="rank_num">4</span>럭키</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=140647" class="link">
+				<div class="rank_txt"><span class="rank_num">5</span>위자 : 저주의 시작</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=38899" class="link">
+				<div class="rank_txt"><span class="rank_num">6</span>노트북</div>
+					<p><em class="up"><span class="blind">상승</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=137971" class="link">
+				<div class="rank_txt"><span class="rank_num">7</span>로스트 인 더스트</div>
+					<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=115642" class="link">
+				<div class="rank_txt"><span class="rank_num">8</span>신비한 동물사전</div>
+					<p><em class="up"><span class="blind">상승</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=141259" class="link">
+				<div class="rank_txt"><span class="rank_num">9</span>가려진 시간</div>
+					<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=151154" class="link">
+				<div class="rank_txt"><span class="rank_num">10</span>당신자신과 당신의 것</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		
+		</ol>
+		<p class="default_date">2016.11.13</p>
+	</div>
+	<!-- [D] 영화인 인기 검색어 -->
+	<div class="pop_search people" style="display:none" role="tabpanel" aria-labelledby="people" aria-expanded="true">
+		<ol class="list">
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=11979" class="link">
+			<div class="rank_txt"><span class="rank_num">1</span>레이첼 맥아담스</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=120197" class="link">
+				<div class="rank_txt"><span class="rank_num">2</span>베네딕트 컴버배치</div>
+						<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=8640" class="link">
+				<div class="rank_txt"><span class="rank_num">3</span>에바 그린</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+	
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=299868" class="link">
+				<div class="rank_txt"><span class="rank_num">4</span>아리무라 카스미</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=299094" class="link">
+				<div class="rank_txt"><span class="rank_num">5</span>마고 로비</div>
+				<p><em class="up"><span class="blind">상승</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=1615" class="link">
+				<div class="rank_txt"><span class="rank_num">6</span>틸다 스윈튼</div>
+				<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=50936" class="link">
+				<div class="rank_txt"><span class="rank_num">7</span>임지연</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=222894" class="link">
+				<div class="rank_txt"><span class="rank_num">8</span>엘라 퍼넬</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=115832" class="link">
+				<div class="rank_txt"><span class="rank_num">9</span>에디 레드메인</div>
+				<p><em class="up"><span class="blind">상승</span></em><em class="num">2</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=8376" class="link">
+				<div class="rank_txt"><span class="rank_num">10</span>조윤희</div>
+				<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		</ol>
+		<p class="default_date">2016.11.13</p>
+	</div>
+</div>
+
+<!-- 푸터 영역 -->
+<footer>
+	<!-- 통합 검색 -->
+	<form action="#" method="get">
+		<div class="unified_search">
+			<fieldset>
+				<legend class="blind">검색</legend>
+				<div class="search_wrap">
+					<div class="search_wrap_inner">
+						<input type="text" name="search" class="ipt_search" title="검색어 입력" value="" placeholder="영화, 영화인, 극장명 입력" maxlength="100">
+						<button type="button" class="btn_remove" name="footerSearchDelButton" id="footerSearchDelButton" role="button">입력 내용 삭제</button> 
+					</div>
+					<button type="submit" class="submit submit_search_btn" role="button"><span class="blind">검색</span></button>
+					<button type="button" class="submit submit_unified_btn" role="button">통합검색</button>
+				</div>
+			</fieldset>
+		</div>
+	</form>
+	<!-- //통합 검색 -->
+
+	<!-- 맨위로 이동 버튼 -->
+	<div class="top_move_wrap">
+		<a href="#" class="link" role="button">맨위로</a>
+	</div>
+	<!-- //맨위로 이동 버튼 -->
+
+	<!-- 하단 링크 영역 -->
+	<div class="footer_link_wrap">
+		<a href="#" class="link logout" role="button">로그아웃</a>
+		<a href="#" class="link app" role="button">전체 앱</a> 
+		<a href="#" class="link pc" role="button">PC버전</a>
+		<a href="#" class="link service" role="button">전체서비스</a>
+	</div>
+	<!-- //하단 링크 영역 -->
+
+	<!-- 하단 정보 영역 -->
+	<div class="footer_info_wrap">
+		<p class="copyright">본 콘텐츠의 저작권은 저작권자 또는 제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다.</p>
+		<dl class="business">
+			<dt>대표이사</dt>
+			<dd>김상헌</dd>
+			<dt>고객센터</dt>
+			<dd><em>1588-3820</em></dd>
+			<dt>주소</dt>
+			<dd>경기도 성남시 분당구 불정로 <em>6</em><br>네이버 그린팩토리 463-867</dd>
+			<dt>사업자등록번호</dt>
+			<dd><em>220-81-62517</em></dd>
+			<dt>통신판매업 신고번호</dt>
+			<dd>경기성남 제 <em>2006-692</em>호</dd>
+		</dl>
+		<ul class="rules_wrap">
+			<li><a href="#" target="_blank" class="link">사업자등록정보 확인</a></li>
+			<li><a href="#" target="_blank" class="link">개인정보 취급방침 보기</a></li>
+		</ul>
+	</div>
+	<!-- //하단 정보 영역 -->
+
+	<!-- 고객센터/address -->
+	<address class="footer_address_wrap">
+		<span class="item center "><a href="#" class="link">영화/예매 고객센터</a></span>
+	    <span class="item report"><a href="#" class="link">오류신고</a></span> 
+	    <p class="item corporation">© <a href="#" class="link u_cra_v1">NAVER Corp.</a></p> 
+	</address>
+	<!-- //고객센터/address -->
+</footer>
+<!-- //푸터 영역 -->
+</body>
+</html>

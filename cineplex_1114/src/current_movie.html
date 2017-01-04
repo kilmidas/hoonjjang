@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>Major Cineplex+ : 현재 상영작</title>
+	<link rel="stylesheet" href="./css/cineplex.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			//lnb 메뉴 탭 
+			$('.lnb_list .item').on('click', function(e){
+				e.preventDefault();
+				$(this).addClass('on');
+				$(this).siblings().removeClass('on');
+			});
+
+			//리스트 정렬 탭 
+			$('.sort_list .item').on('click', function(e){
+				e.preventDefault();
+				$(this).addClass('on');
+				$(this).siblings().removeClass('on');
+			});
+
+			//영화 인기 검색어 탭 
+			$('.pop_search_wrap .tab > li').on('click', function(e){
+				e.preventDefault();
+				$(this).removeClass('on');
+				$(this).siblings().addClass('on');
+				if($(this).hasClass('movie')){
+					$('.pop_search.movie').show();
+					$('.pop_search.people').hide();
+				}else {
+					$('.pop_search.movie').hide();
+					$('.pop_search.people').show();
+				};
+			});
+
+			//맨 위로 버튼
+			$('.top_move_wrap .link').on('click', function(e){
+				e.preventDefault();
+				$('html body').scrollTop(0);
+			});
+
+		})
+	</script>
+</head>
+<body>
+<!-- 본문 바로가기 -->
+<div class="u_skip"><a href="#content">본문 바로가기</a></div>
+<!-- //본문 바로가기 -->
+
+<!-- lnb -->
+<div class="lnb">
+	<ul class="lnb_list">
+		<!-- [D] 선택시 li에 on 추가 -->
+		<li class="item on"><a href="#" class="link" role="button"><span class="link_menu">현재상영작</span></a></li>
+		<li class="item"><a href="#" class="link" role="button"><span class="link_menu">개봉예정작</span></a></li
+	</ul>
+</div>
+<!-- //lnb -->
+
+<!-- content -->
+<div class="content">
+<!-- 영화 정렬 -->
+<div class="sort">
+	<h3 class="blind">정렬옵션</h3>
+	<ul class="sort_list" role="group">
+		<!--[D] 정렬 선택 시 <span>선택됨</span 추가 -->
+		<li class="item on"><a href="#" class="link" role="button" aria-checked="true">예매율순</a></li>
+		<li class="item"><a href="#" class="link" role="button" aria-checked="false">평점순</a></li>
+		<li class="item"><a href="#" class="link" role="button" aria-checked="false">좋아요순</a></li>
+	</ul>
+</div>
+<!-- //영화 정렬 -->
+
+<!-- 영화 리스트 -->
+<div class="movie">	
+	<ul>
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster">
+				<a href="#" class="link"><img src="http://movie.phinf.naver.net/20161014_50/147640824152266AVn_JPEG/movie_image.jpg?type=w64" width="64" alt="포스터 이미지"></a><div class="ico_rank_top">1<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="#" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001002"><span class="blind">(12세 관람가)</span></span><em>닥터 스트레인지</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.77</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+					<strong class="str">37.46%</strong>
+					</div>
+					
+					<span class="info">액션 <span class="br">|</span> 
+							115분 <span class="br">|</span>
+							2016.10.26 개봉<br>
+						베네딕트 컴버배치,틸다 스윈튼,치웨텔 에지오포,레이첼 맥아담스,매즈 미켈슨</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>	
+				</div>
+			</div>
+		</li>
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161104_266/1478220914817NoVwl_JPEG/movie_image.jpg?type=w64" width="64" alt="포스터 이미지"></a>
+					<div class="ico_rank_top">2<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=146512" class="link">
+
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>스플릿</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">9.09</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								20.17%
+						</strong>
+					</div>
+					
+					<span class="info">드라마 <span class="br">|</span> 
+							121분 <span class="br">|</span> 
+							2016.11.09 개봉<br>
+						유지태,이정현,이다윗,정성화</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20160920_197/1474334630845OPmlV_JPEG/movie_image.jpg?type=w64" width="64" alt="포스터 이미지"></a>
+				<div class="ico_rank_top">3<span class="blind">위</span></div>		
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=140695" class="link">
+
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>럭키</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.60</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								14.91%
+						</strong>
+					</div>
+					
+					<span class="info">코미디 <span class="br">|</span> 
+							112분 <span class="br">|</span> 
+						2016.10.13 개봉<br>
+						유해진,이준,조윤희,임지연</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161031_300/14778768282600rHU5_JPEG/movie_image.jpg?type=w64" width="64" alt="포스터 이미지"></a>
+				<div class="ico_rank">4<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=140647" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001002"><span class="blind">(12세 관람가)</span></span><em>위자 : 저주의 시작</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">7.83</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">	
+								6.89%
+						</strong>
+					</div>
+					<span class="info">공포 <span class="br">|</span> 
+							99분 <span class="br">|</span> 
+							2016.11.09 개봉<br>
+						더그 존스,헨리 토마스,케이트 시겔,엘리자베스 리저,린 샤예,애너리즈 바쏘,룰루 윌슨</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+	
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161021_4/1477013277230Alau9_JPEG/movie_image.jpg?type=w64" width="64" alt="포스터 이미지"></a>
+				<div class="ico_rank">5<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=144355" class="link">
+
+					<div class="subject">
+						<span class="ico_grade ic1001001"><span class="blind">(전체 관람가)</span></span><em>감바의 대모험</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.64</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								3.69%
+						</strong>
+					</div>
+					<span class="info">애니메이션 <span class="br">|</span> 
+							90분 <span class="br">|</span> 				
+							2016.11.10 개봉<br>
+
+						칸다 사야카,카지 유우키,타카기 와타루,오오츠카 아키오,이케다 슈이치,타카토 야스히로,후지와라 케이지,야지마 아키코</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>	
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161026_271/1477463580542wovM2_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+				<div class="ico_rank">6<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=152183" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>무현, 두 도시 이야기</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.92</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								3.59%
+						</strong>
+					</div>
+					<span class="info">다큐멘터리 <span class="br">|</span> 
+							95분 <span class="br">|</span> 
+							2016.10.26 개봉<br>
+							노무현,김원명,김하연,백승영,조덕희,박영희,장철영,윤종훈,이종우</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="item">			
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161101_195/1477974792110pAokg_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+					<div class="ico_rank">7<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=146944" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001001"><span class="blind">(전체 관람가)</span></span><em>극장판 파워레인저: 닌자포스 VS 트레인포스 닌자 인 원더랜드</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">9.04</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								2.01%
+						</strong>
+					</div>
+					<span class="info">액션 <span class="br">|</span> 
+							60분 <span class="br">|</span> 
+							2016.11.03 개봉<br>
+						니시카와 슌스케,마츠모토 가쿠,나카무라 카이토,야노 유카,야마야 카스미</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161021_141/1477036254541C87m1_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+					<div class="ico_rank">8<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=38899" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>노트북</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">9.07</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								1.93%
+						</strong>
+					</div>
+					<span class="info">멜로/로맨스 <span class="br">|</span> 
+							123분 <span class="br">|</span> 
+							2016.10.19 개봉<br>
+						라이언 고슬링,레이첼 맥아담스</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+						<a href="#" class="btn" target="_blank" role="button">다운로드</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie2.phinf.naver.net/20161013_239/1476323533157nC7yR_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+					<div class="ico_rank">9<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=151154" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001004"><span class="blind">(청소년 관람불가)</span></span><em>당신자신과 당신의 것</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">7.07</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								0.93%
+						</strong>
+					</div>
+					<span class="info">드라마 <span class="br">|</span> 
+							86분 <span class="br">|</span> 
+							2016.11.10 개봉<br>
+						김주혁,이유영,김의성,권해효,유준상</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161031_112/1477878274762kEDRf_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+					<div class="ico_rank">10<span class="blind">위</span></div>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=150632" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001002"><span class="blind">(12세 관람가)</span></span><em>세상에서 고양이가 사라진다면</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.70</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+							0.67%
+						</strong>
+					</div>
+					<span class="info">드라마 <span class="br">|</span> 
+							103분 <span class="br">|</span> 
+							2016.11.09 개봉<br>
+						사토 타케루,미야자키 아오이</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie2.phinf.naver.net/20161007_126/1475820229731rjGPX_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=129461" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>인페르노</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.09</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								0.58%
+						</strong>
+					</div>
+					
+					<span class="info">미스터리 <span class="br">|</span> 
+							121분 <span class="br">|</span> 
+							2016.10.19 개봉<br>
+						톰 행크스,펠리시티 존스,오마 사이,벤 포스터,이르판 칸</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161026_160/1477458664023eYKdG_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=137971" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>로스트 인 더스트</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.51</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								0.57%
+						</strong>
+					</div>
+					<span class="info">범죄 <span class="br">|</span> 
+							103분 <span class="br">|</span> 
+							2016.11.03 개봉<br>
+						크리스 파인,벤 포스터,제프 브리지스,케이티 믹슨</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie2.phinf.naver.net/20161014_227/1476428458295JVQXR_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=155550" class="link" >
+					<div class="subject">
+						<span class="ico_grade ic1001001"><span class="blind">(전체 관람가)</span></span><em>인어공주:새로운 모험의 시작</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">5.59</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								0.44%
+						</strong>
+					</div>
+					<span class="info">애니메이션 <span class="br">|</span> 
+							77분 <span class="br">|</span> 
+							2016.11.03 개봉<br>
+						김경희,김연우,윤세웅,홍진욱</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+						<a href="#" class="btn" target="_blank" role="button">다운로드</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie2.phinf.naver.net/20160920_156/1474347348571tAzrJ_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=133492" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001001"><span class="blind">(전체 관람가)</span></span><em>쿠보와 전설의 악기</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">8.51</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								0.33%
+						</strong>
+					</div>
+					<span class="info">애니메이션 <span class="br">|</span> 
+							102분 <span class="br">|</span> 
+							2016.10.26 개봉<br>
+						랄프 파인즈,루니 마라,매튜 맥커너히,샤를리즈 테론,아트 파킨슨,조지 타케이</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="item">
+			<div class="item_inner">
+				<div class="poster"><a href="#" class="link"><img src="http://movie.phinf.naver.net/20161004_45/1475545337972XDyUi_JPEG/movie_image.jpg?type=w64" class="b" width="64" height="92" alt="포스터 이미지"></a>
+				</div>
+				<div class="exp">
+					<a href="/m/endpage/movie/Basic.nhn?movieCode=146534" class="link">
+					<div class="subject">
+						<span class="ico_grade ic1001003"><span class="blind">(15세 관람가)</span></span><em>자백</em>
+					</div>
+					<div class="status"><span class="rate"><span class="rate_mask"></span></span> <strong class="str">9.37</strong> <span class="br">|</span>
+					<span class="str txt">예매율</span>
+						<strong class="str">
+								0.33%
+						</strong>
+					</div>
+					
+					<span class="info">다큐멘터리 <span class="br">|</span> 
+							106분 <span class="br">|</span> 
+							2016.10.13 개봉<br>
+						최승호,김기춘,원세훈</span>
+					</a>
+					<div class="btn_wrap">
+						<a href="#" class="btn" role="button">예매</a>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<!-- //영화 리스트 -->
+
+<!-- 페이징 -->
+<div class="page" id="navigator">
+	<!-- [D] 이전 버튼 노출 시 blind class 삭제 -->
+	<a class="btn_wrap blind" href="#" role="button"><span class="btn prev">이전</span></a>
+	<span class="page_wrap">
+		<a href="#" class="link now" role="button">1<span class="blind">페이지</span></a>
+		<a href="#" class="link" role="button">2<span class="blind">페이지</span></a>
+		<a href="#" class="link" role="button">3<span class="blind">페이지</span></a>
+		<a href="#" class="link" role="button">4<span class="blind">페이지</span></a>
+		<a href="#" class="link" role="button">5<span class="blind">페이지</span></a>
+	</span>
+	<a class="btn_wrap" href="#" role="button"><span class="btn next">다음</span></a>
+</div>
+<!-- //페이징 -->
+
+<!-- [D} 소셜 플러그인 공통 영역 -->
+<div class="plugin">
+	<div class="spi_wrap">
+		<div class="spi">
+			<div class="spug">
+				<a href="#" class="link  sns_blog" data-button="blog" role="button"></a>
+				<a href="#" class="link sns_cafe" data-button="cafe" role="button"></a>
+				<a href="#" class="link sns_bookmark" data-button="bookmark" role="button"></a>
+				<a href="#" class="link sns_memo" data-button="memo" role="button"></a>
+				<a href="#" class="link sns_pholar" data-button="pholar" role="button"></a>
+				<a href="#" class="link sns_kakaotalk" data-button="kakaotalk" role="button"></a>
+				<a href="#" class="link sns_band" data-button="band" role="button"></a>
+				<a href="#" class="link sns_share nv_notrans" data-button="postbtn" role="button">보내기</a>
+			</div>	
+		</div>
+	</div>
+</div>
+<!-- //소셜 플러그인 -->
+</div>
+<!-- //content -->
+
+<!-- 영화 인기 검색 -->
+<div class="pop_search_wrap">
+	<!-- [D] on클래스로 활성 비활성화 컨트롤 -->
+	<ul class="tab" role="tablist">
+		<li class="item movie"><a href="#" class="link" id="movie" role="tab" aria-selected="true">영화 인기 검색어</a></li>
+		<li class="item people on"><a href="#" class="link" id="people" role="tab" aria-selected="false">영화인 인기 검색어</a></li>
+	</ul>
+	<!-- [D] 영화 인기 검색어 -->
+	<div class="pop_search movie" role="tabpanel" aria-labelledby="movie" aria-expanded="true">
+		<ol class="list">
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=125459" class="link">
+				<div class="rank_txt"><span class="rank_num">1</span>닥터 스트레인지</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=146512" class="link">
+				<div class="rank_txt"><span class="rank_num">2</span>스플릿</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=152183" class="link">
+				<div class="rank_txt"><span class="rank_num">3</span>무현, 두 도시 이야기</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=140695" class="link">
+				<div class="rank_txt"><span class="rank_num">4</span>럭키</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=140647" class="link">
+				<div class="rank_txt"><span class="rank_num">5</span>위자 : 저주의 시작</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=38899" class="link">
+				<div class="rank_txt"><span class="rank_num">6</span>노트북</div>
+					<p><em class="up"><span class="blind">상승</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=137971" class="link">
+				<div class="rank_txt"><span class="rank_num">7</span>로스트 인 더스트</div>
+					<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=115642" class="link">
+				<div class="rank_txt"><span class="rank_num">8</span>신비한 동물사전</div>
+					<p><em class="up"><span class="blind">상승</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=141259" class="link">
+				<div class="rank_txt"><span class="rank_num">9</span>가려진 시간</div>
+					<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/movie/Basic.nhn?movieCode=151154" class="link">
+				<div class="rank_txt"><span class="rank_num">10</span>당신자신과 당신의 것</div>
+					<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		
+		</ol>
+		<p class="default_date">2016.11.13</p>
+	</div>
+	<!-- [D] 영화인 인기 검색어 -->
+	<div class="pop_search people" style="display:none" role="tabpanel" aria-labelledby="people" aria-expanded="true">
+		<ol class="list">
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=11979" class="link">
+			<div class="rank_txt"><span class="rank_num">1</span>레이첼 맥아담스</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=120197" class="link">
+				<div class="rank_txt"><span class="rank_num">2</span>베네딕트 컴버배치</div>
+						<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=8640" class="link">
+				<div class="rank_txt"><span class="rank_num">3</span>에바 그린</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+	
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=299868" class="link">
+				<div class="rank_txt"><span class="rank_num">4</span>아리무라 카스미</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=299094" class="link">
+				<div class="rank_txt"><span class="rank_num">5</span>마고 로비</div>
+				<p><em class="up"><span class="blind">상승</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=1615" class="link">
+				<div class="rank_txt"><span class="rank_num">6</span>틸다 스윈튼</div>
+				<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=50936" class="link">
+				<div class="rank_txt"><span class="rank_num">7</span>임지연</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=222894" class="link">
+				<div class="rank_txt"><span class="rank_num">8</span>엘라 퍼넬</div>
+				<p><em class="default"></em><em class="num">0</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=115832" class="link">
+				<div class="rank_txt"><span class="rank_num">9</span>에디 레드메인</div>
+				<p><em class="up"><span class="blind">상승</span></em><em class="num">2</em></p>
+			</a>
+		</li>
+		<li class="item">
+			<a href="/m/endpage/people/Basic.nhn?peopleCode=8376" class="link">
+				<div class="rank_txt"><span class="rank_num">10</span>조윤희</div>
+				<p><em class="down"><span class="blind">하락</span></em><em class="num">1</em></p>
+			</a>
+		</li>
+		</ol>
+		<p class="default_date">2016.11.13</p>
+	</div>
+</div>
+
+<!-- 푸터 영역 -->
+<footer>
+	<!-- 통합 검색 -->
+	<form action="#" method="get">
+		<div class="unified_search">
+			<fieldset>
+				<legend class="blind">검색</legend>
+				<div class="search_wrap">
+					<div class="search_wrap_inner">
+						<input type="text" name="search" class="ipt_search" title="검색어 입력" value="" placeholder="영화, 영화인, 극장명 입력" maxlength="100">
+						<button type="button" class="btn_remove" name="footerSearchDelButton" id="footerSearchDelButton" role="button">입력 내용 삭제</button> 
+					</div>
+					<button type="submit" class="submit submit_search_btn" role="button"><span class="blind">검색</span></button>
+					<button type="button" class="submit submit_unified_btn" role="button">통합검색</button>
+				</div>
+			</fieldset>
+		</div>
+	</form>
+	<!-- //통합 검색 -->
+
+	<!-- 맨위로 이동 버튼 -->
+	<div class="top_move_wrap">
+		<a href="#" class="link" role="button">맨위로</a>
+	</div>
+	<!-- //맨위로 이동 버튼 -->
+
+	<!-- 하단 링크 영역 -->
+	<div class="footer_link_wrap">
+		<a href="#" class="link logout" role="button">로그아웃</a>
+		<a href="#" class="link app" role="button">전체 앱</a> 
+		<a href="#" class="link pc" role="button">PC버전</a>
+		<a href="#" class="link service" role="button">전체서비스</a>
+	</div>
+	<!-- //하단 링크 영역 -->
+
+	<!-- 하단 정보 영역 -->
+	<div class="footer_info_wrap">
+		<p class="copyright">본 콘텐츠의 저작권은 저작권자 또는 제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다.</p>
+		<dl class="business">
+			<dt>대표이사</dt>
+			<dd>김상헌</dd>
+			<dt>고객센터</dt>
+			<dd><em>1588-3820</em></dd>
+			<dt>주소</dt>
+			<dd>경기도 성남시 분당구 불정로 <em>6</em><br>네이버 그린팩토리 463-867</dd>
+			<dt>사업자등록번호</dt>
+			<dd><em>220-81-62517</em></dd>
+			<dt>통신판매업 신고번호</dt>
+			<dd>경기성남 제 <em>2006-692</em>호</dd>
+		</dl>
+		<ul class="rules_wrap">
+			<li><a href="#" target="_blank" class="link">사업자등록정보 확인</a></li>
+			<li><a href="#" target="_blank" class="link">개인정보 취급방침 보기</a></li>
+		</ul>
+	</div>
+	<!-- //하단 정보 영역 -->
+
+	<!-- 고객센터/address -->
+	<address class="footer_address_wrap">
+		<span class="item center "><a href="#" class="link">영화/예매 고객센터</a></span>
+	    <span class="item report"><a href="#" class="link">오류신고</a></span> 
+	    <p class="item corporation">© <a href="#" class="link u_cra_v1">NAVER Corp.</a></p> 
+	</address>
+	<!-- //고객센터/address -->
+</footer>
+<!-- //푸터 영역 -->
+</body>
+</html>

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<title>Gulp 가이드</title>
+<link rel="stylesheet" href="./Gulp 가이드_files/css">
+<link rel="stylesheet" href="./Gulp 가이드_files/asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Gulp 가이드</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#__">1. 사전 준비</a>
+<ul class="sectlevel2">
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_node_js">1.1. node.js 세팅</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_gulp_cli">1.2. gulp-cli 설치</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_package_json">1.3. package.json 준비</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_node_module">1.4. node module 설치</a></li>
+</ul>
+</li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_gulp">2. gulp 사용하기</a>
+<ul class="sectlevel2">
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#___2">2.1. 기본 사용법</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_gitignore">2.2. gitignore 설정</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#___3">2.3. 경로 설정하기</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#default_setting">2.4. 기능 설정하기</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_sprite">2.5. sprite 사용법</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_task">2.6. task 목록 및 설명</a></li>
+</ul>
+</li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#___5">3. 참조</a>
+<ul class="sectlevel2">
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_gulpfile_js">3.1. gulpfile.js 작성을 위한 준비</a></li>
+<li><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_task_2">3.2. Task 상세설명</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="__">1. 사전 준비</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_node_js">1.1. node.js 세팅</h3>
+<div class="paragraph">
+<p>해당 gulpfile.js를 사용하기 위해선 node.js v4 이상이 필요합니다.<br>
+아래 내용을 참고하여 node.js를 세팅하시기 바랍니다.</p>
+</div>
+<div class="sect3">
+<h4 id="_node_js_2">1.1.1. node.js 설치여부 및 버전 확인</h4>
+<div class="listingblock">
+<div class="content">
+<pre>node -v</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>명령어 입력 후 v4.5.0 과 같은 숫자가 나온다면 이미 node.js가 설치되어 있습니다.<br>
+버전이 v4.x.x 보다 낮을 경우 <a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_node_js_4">node.js 업데이트하기</a>를 진행해 주시기 바랍니다.<br>
+만약 그 외 에러가 난다면 설치되어 있지 않습니다. <a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_node_js_3">node.js 설치</a>를 진행해 주시기 바랍니다.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_node_js_3">1.1.2. node.js 설치</h4>
+<div class="paragraph">
+<p>node.js가 설치되어 있지 않은 경우 <a href="https://nodejs.org/en/download/">다운로드 페이지</a>에서 해당 OS 맞는 node.js를 받아 설치합니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+node.js의 배포버전 중 LTS버전을 설치합니다.
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_node_js_4">1.1.3. node.js 업데이트하기</h4>
+<div class="paragraph">
+<p>node.js가 이미 설치되어 있으나 버전이 v4.x.x 보다 낮을 경우 업데이트를 해야 합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm cache clean -f
+npm install -g n
+n stable</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OS X의 경우 root 권한이 필요하므로 sudo를 추가합니다.<br>
+        sudo npm cache clean -f<br>
+        sudo npm install -g n<br>
+        sudo n stable
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gulp_cli">1.2. gulp-cli 설치</h3>
+<div class="paragraph">
+<p>gulp를 쉽게 실행하기 위해 명령어로 설치를 합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm install -g gulp-cli</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+OS X의 경우 root 권한이 필요하므로 sudo를 추가합니다.<br>
+        sudo npm install -g gulp-cli
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_package_json">1.3. package.json 준비</h3>
+<div class="paragraph">
+<p>gulpfile 압축 파일을 받으신 경우 압축을 푸시면 package.json이 같이 들어가 있으니 사용하시면 됩니다.<br>
+만약 새로운 프로젝트 생성을 위해 package.json을 생성하실 경우 <a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_package_json_2">package.json 생성</a>을 참고해 주세요.<br>
+그 외의 경우 Git 저장소 등에서 package.json을 다운 받아 준비합니다.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_node_module">1.4. node module 설치</h3>
+<div class="paragraph">
+<p>package.json에 정의되어 있는 node module을 설치합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm install</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gulp">2. gulp 사용하기</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="___2">2.1. 기본 사용법</h3>
+<div class="listingblock">
+<div class="content">
+<pre>gulp [task명]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gitignore">2.2. gitignore 설정</h3>
+<div class="paragraph">
+<p>.gitignore 파일에 아래 내용을 추가합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>node_modules
+.ftppass</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+아래 내용을 터미널에 입력하셔도 됩니다.<br>
+        echo node_modules &gt;&gt; .gitignore<br>
+        echo .ftppass &gt;&gt; .gitignore
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___3">2.3. 경로 설정하기</h3>
+<div class="paragraph">
+<p>gulpfile.js 파일을 열어 paths를 수정.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="kwd">var</span><span class="pln"> paths </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	sprite_src</span><span class="pun">:</span><span class="pln"> </span><span class="str">'src/sprite'</span><span class="pun">,</span><span class="pln">     </span><span class="com">// sprite 원본 파일 위치</span><span class="pln">
+	sprite_dest</span><span class="pun">:</span><span class="pln"> </span><span class="str">'src/img/sprite'</span><span class="pun">,</span><span class="pln"> </span><span class="com">// sprite 저장 위치</span><span class="pln">
+	css_src</span><span class="pun">:</span><span class="pln"> </span><span class="str">'src/scss'</span><span class="pun">,</span><span class="pln">           </span><span class="com">// scss, less 등 css 전처리 파일 위치</span><span class="pln">
+	css_dest</span><span class="pun">:</span><span class="pln"> </span><span class="str">'src/css'</span><span class="pun">,</span><span class="pln">           </span><span class="com">// css 저장 위치</span><span class="pln">
+	img_dest</span><span class="pun">:</span><span class="pln"> </span><span class="str">'src/img'</span><span class="pun">,</span><span class="pln">           </span><span class="com">// img 원본 위치</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="default_setting">2.4. 기능 설정하기</h3>
+<div class="sect3">
+<h4 id="___4">2.4.1. 기본 기능 설정</h4>
+<div class="paragraph">
+<p>gulpfile.js 파일을 열어 config를 수정.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="kwd">var</span><span class="pln"> config </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    pc</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">              </span><span class="com">// pc, mobile 여부. true일 경우 autoprefixer가 pc 옵션으로 동작 됩니다.</span><span class="pln">
+	browserSync</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">    </span><span class="com">// browser sync 사용여부. true로 설정하면 watch 동작 시 browser sync가 동작됩니다.</span><span class="pln">
+	notify</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">          </span><span class="com">// nofify 사용여부. true로 설정하면 에러 발생시 notify 알림 토스트가 뜹니다.</span><span class="pln">
+	urlRebase</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">      </span><span class="com">// url rebase 사용여부. true로 설정하면 아래 option에 따라 build 시에 css내의 경로가 바뀌어서 적용됩니다.</span><span class="pln">
+	urlRebaseOption</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">     </span><span class="com">// url rebase 관련 옵션 </span><b class="conum"><span class="com">(1)</span></b><span class="pln">
+		basePath</span><span class="pun">:</span><span class="pln"> paths</span><span class="pun">.</span><span class="pln">img_dest</span><span class="pun">,</span><span class="pln">     </span><span class="com">// rebase 기준 디렉토리</span><span class="pln">
+		defaultUrl</span><span class="pun">:</span><span class="pln"> </span><span class="str">'http://static.naver.com/'</span><span class="pun">,</span><span class="pln">   </span><span class="com">// 기본 rebase url.</span><span class="pln">
+		urlList</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">        </span><span class="com">// rebase url 개별 기준. </span><b class="conum"><span class="com">(2)</span></b><span class="pln">
+			</span><span class="str">'sprite/'</span><span class="pun">:</span><span class="pln"> </span><span class="str">'http://static.naver.com/sp/'</span><span class="pun">,</span><span class="pln">
+		</span><span class="pun">},</span><span class="pln">
+	</span><span class="pun">},</span><span class="pln">
+	md5</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">             </span><span class="com">// static서버의 cache를 위한 sprite 이미지 md5 사용 여부. true로 설정하면 sprite 이미지명에 md5 코드를 붙입니다.</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>url rebase는 아래와 같이 동작 됩니다.<br>
+css 내의 url로 설정되어 있는 부분이 basePath를 기준으로 defaultUrl로 바뀌게 됩니다.<br>
+ex: background-image: url(../img/test1.png) ⇒ background-image: url(<a href="http://static.naver.com/test1.png" class="bare">http://static.naver.com/test1.png</a>)</p>
+</li>
+<li>
+<p>defaultUrl외의 추가적인 기준을 정합니다.<br>
+basePath 하위 path를 기준으로 매칭되는 url로 바뀌게 됩니다.<br>
+ex: background-image: url(../img/sprite/sp_test1.png) ⇒ background-image: url(<a href="http://static.naver.com/sp/sp_test1.png" class="bare">http://static.naver.com/sp/sp_test1.png</a>)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ftp_setting">2.4.2. ftp 설정</h4>
+<div class="paragraph">
+<p>gulpfile.js 와 같은 위치에 .ftppass 파일을 생성하여 아래와 같이 입력합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="pun">{</span><span class="pln">
+    </span><span class="str">"key1"</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">"username"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"USERNAME"</span><span class="pun">,</span><span class="pln">
+        </span><span class="str">"password"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"PASSWORD"</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>USERNAME 부분을 ftp용 id로 변경<br>
+PASSWORD 부분을 ftp용 password로 변경</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+.ftppass 파일은 각 개인별 로그인 정보를 담고 있음으로 .ignore에 등록하여 GIT으로 관리되지 않도록 한다.
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>gulpfile.js의 아래 내용을 찾아 remotePath를 변경합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="pln">gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'ftp'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	</span><span class="kwd">var</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		ftp</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+			host</span><span class="pun">:</span><span class="pln"> </span><span class="str">'view.ui.naver.com'</span><span class="pun">,</span><span class="pln">
+			port</span><span class="pun">:</span><span class="pln"> </span><span class="str">'2001'</span><span class="pun">,</span><span class="pln">
+			userKeyFile</span><span class="pun">:</span><span class="pln"> </span><span class="str">'.ftppass'</span><span class="pun">,</span><span class="pln">
+			userKey</span><span class="pun">:</span><span class="pln"> </span><span class="str">'key1'</span><span class="pun">,</span><span class="pln">
+			parallel</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln">
+			remotePath</span><span class="pun">:</span><span class="pln"> </span><span class="str">''</span><span class="pun">,</span><span class="pln"> </span><span class="com">//서비스 경로 설정 </span><b class="conum"><span class="com">(1)</span></b><span class="pln">
+			log</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+		</span><span class="pun">},</span><span class="pln">
+	</span><span class="pun">};</span><span class="pln">
+    </span><span class="pun">...</span><span class="pln">
+</span><span class="pun">})</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>서비스에서 사용하는 디렉토리 경로로 변경해 주시기 바랍니다. '예)/RND/taskrunner'과 같이 <a href="http://view.ui.naver.com/" class="bare">http://view.ui.naver.com/</a> 뒤쪽 경로를 서비스별로 설정(필수값)하며 루트폴더('/')로 설정시 오류가 발생합니다.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sprite">2.5. sprite 사용법</h3>
+<div class="sect3">
+<h4 id="_sprite_2">2.5.1. sprite 파일 구조</h4>
+<div class="listingblock">
+<div class="content">
+<pre>service name
+    ㄴ src
+        ㄴ [scss]
+			ㄴ [import]
+				ㄴ _sprite_maps.scss // gulp sprite task 실행 시 자동 생성 됩니다.
+				ㄴ _sprite_mixin.scss
+        ㄴ [img]
+            ㄴ [sprite]
+                ㄴ [sp_폴더명.png]
+        ㄴ [sprite]
+            ㄴ [각 sprite 폴더]
+                ㄴ [*.png]</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sprite_mixin">2.5.2. sprite mixin</h4>
+<div class="paragraph">
+<p>아래 파일 구조인 경우의 사용 예제 입니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>service name
+    ㄴ src
+		ㄴ [scss]
+			ㄴ [import]
+				ㄴ _sprite_maps.scss // gulp sprite task 실행 시 자동 생성 됩니다.
+				ㄴ _sprite_mixin.scss
+			ㄴ test.scss
+        ㄴ [img]
+            ㄴ [sprite]
+                ㄴ [sp_test.png]
+        ㄴ [sprite]
+            ㄴ [test]
+                ㄴ [test1.png]
+                ㄴ [test2.png]
+                ㄴ [test3.png]
+                ㄴ [test4.png]
+                ㄴ [test5.png]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>test.scss</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-scss" data-lang="scss"><span class="lit">@import</span><span class="pln"> </span><span class="str">'import/sprite_maps'</span><span class="pun">;</span><span class="pln">
+</span><span class="lit">@import</span><span class="pln"> </span><span class="str">'import/sprite_mixin'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="com">/* 기본 사용법 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case1 </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">(</span><span class="str">'test1'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case2 </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">(</span><span class="str">'test2'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* extend 미사용 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">sp_test </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@extend</span><span class="pln"> </span><span class="pun">%</span><span class="pln">sp_test</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case3 </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">(</span><span class="str">'test3'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">extend</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* extend 미사용 + sprite 이미지 정보 출력 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case4 </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">(</span><span class="str">'test4'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">extend</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">image</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* position 조정 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case5 </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">(</span><span class="str">'test5'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">set</span><span class="pun">-</span><span class="pln">offset</span><span class="pun">-</span><span class="pln">x</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">set</span><span class="pun">-</span><span class="pln">offset</span><span class="pun">-</span><span class="pln">y</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="lit">5</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* 그 외 mixin */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case_position </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">-</span><span class="pln">background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">(</span><span class="str">'test1'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case_width </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">-</span><span class="pln">width</span><span class="pun">(</span><span class="str">'test1'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case_height </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@include</span><span class="pln"> </span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sprite</span><span class="pun">-</span><span class="pln">height</span><span class="pun">(</span><span class="str">'test1'</span><span class="pun">,</span><span class="pln"> $sp_test</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>css</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-css" data-lang="css"><span class="com">/* extend를 사용하지 않은 클래스들은 없습니다 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">.</span><span class="pln">case2</span><span class="pun">,</span><span class="pln"> </span><span class="pun">.</span><span class="pln">sp_test</span><span class="pun">,</span><span class="pln"> </span><span class="pun">.</span><span class="pln">case5 </span><span class="pun">{</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">image</span><span class="pun">:</span><span class="pln"> url</span><span class="pun">(../</span><span class="pln">img</span><span class="pun">/</span><span class="pln">sprite</span><span class="pun">/</span><span class="pln">sp_test</span><span class="pun">.</span><span class="pln">png</span><span class="pun">);</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100px</span><span class="pln"> </span><span class="lit">100px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="com">/* 기본 사용법 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case1 </span><span class="pun">{</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+	width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+	height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case2 </span><span class="pun">{</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="lit">12px</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+	width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+	height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* extend 미사용 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case3 </span><span class="pun">{</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="lit">24px</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+	width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+	height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* extend 미사용 + sprite 이미지 정보 출력 */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case4 </span><span class="pun">{</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">image</span><span class="pun">:</span><span class="pln"> url</span><span class="pun">(../</span><span class="pln">img</span><span class="pun">/</span><span class="pln">sprite</span><span class="pun">/</span><span class="pln">sp_test</span><span class="pun">.</span><span class="pln">png</span><span class="pun">);</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">100px</span><span class="pln"> </span><span class="lit">100px</span><span class="pun">;</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="pun">-</span><span class="lit">12px</span><span class="pun">;</span><span class="pln">
+	width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+	height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">.</span><span class="pln">case5 </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">/* background-position: -12px -12px; 원래 위치*/</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="lit">17px</span><span class="pln"> </span><span class="pun">-</span><span class="lit">17px</span><span class="pun">;</span><span class="pln">
+	width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+	height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">/* 그 외 mixin */</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case_position </span><span class="pun">{</span><span class="pln">
+    background</span><span class="pun">-</span><span class="pln">position</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case_width </span><span class="pun">{</span><span class="pln">
+    width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">.</span><span class="pln">case_height </span><span class="pun">{</span><span class="pln">
+    height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10px</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>html</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-html" data-lang="html"><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"case1"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln">
+</span><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"case2"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln">
+</span><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"sp_test case3"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln">
+</span><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"case4"</span><span class="tag">&gt;&lt;/i&gt;</span><span class="pln">
+</span><span class="tag">&lt;i</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"case5"</span><span class="tag">&gt;&lt;/i&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task">2.6. task 목록 및 설명</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>default : 기본 task로 'gulp' 만 쳐도 동작합니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>기본적으로 watch가 동작되도록 설정되어 있습니다.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>dev : 개발용으로 동작하는 task 입니다.</p>
+</li>
+<li>
+<p>build : 산출물 배포를 위한 파일생성 task 입니다.</p>
+</li>
+<li>
+<p>watch : 파일이 수정되었을때 바로 동작하도록 감시하는 task 입니다.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>기본적으로 css_src, sprite_src를 감시하며, sass, sprite task를 동작 시킵니다.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>sprite : spritesmith를 이용하여 sprite를 생성합니다.</p>
+</li>
+<li>
+<p>sass : scss를 css로 생성합니다.</p>
+</li>
+<li>
+<p>minify : css를 minify 합니다.</p>
+</li>
+<li>
+<p>ftp : 브랜치명을 기준으로 폴더를 생성하여 ftp에 업로드합니다.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___5">3. 참조</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_gulpfile_js">3.1. gulpfile.js 작성을 위한 준비</h3>
+<div class="sect3">
+<h4 id="_package_json_2">3.1.1. package.json 생성</h4>
+<div class="paragraph">
+<p>새로운 프로젝트를 위해 package.json을 생성해야 하는 경우 아래와 같이 생성 할 수 있습니다.</p>
+</div>
+<div class="paragraph">
+<p>이미 Git 저장소 등을 통해 세팅된 package.json을 받으신 경우 이 단계는 넘어가시면 됩니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm init
+
+name: (naver) // 소문자로 시작하는 프로젝트 이름
+version: (1.0.0) // 이후 전부 Enter
+...
+Is this ok? (yes) // Enter</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+node.js 설치법은 <a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#_node_js">node.js 세팅</a>을 참고하세요.
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_package_json_3">3.1.2. package.json에 모듈 추가,제거</h4>
+<div class="paragraph">
+<p>package.json에 node 모듈을 설치하여 추가할 시 아래 명령어를 실행합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm install --save-dev 모듈명
+
+//gulp 설치 시
+npm install --save-dev gulp</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>package.json에 설치한 node 모듈을 제거 할 경우 아래 명령어를 실행합니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm uninstall --save-dev 모듈명
+
+//gulp 제거 시
+npm uninstall --save-dev gulp</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gulp_api">3.1.3. gulp 스크립트 API</h4>
+<div class="paragraph">
+<p>스크립트 작성을 위한 API에 관한 내용은 아래의 링크를 참고하시기 바랍니다.<br>
+<a href="https://github.com/preco21/gulp-docs-ko">gulp 한글 참조 문서</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task_2">3.2. Task 상세설명</h3>
+<div class="sect3">
+<h4 id="_sass_task">3.2.1. sass task</h4>
+<div class="paragraph">
+<p>Sass로 작성된 파일을 css로 변환하기 위한 task 입니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="pln">gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'sass'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// 개발 중 sass task</span><span class="pln">
+	</span><span class="kwd">return</span><span class="pln"> gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="pln">path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_src</span><span class="pun">,</span><span class="pln"> </span><span class="str">'**/*.scss'</span><span class="pun">))</span><span class="pln"> </span><span class="com">// scss 파일 위치</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">plumber</span><span class="pun">(</span><span class="pln">globalOptions</span><span class="pun">.</span><span class="pln">notify</span><span class="pun">))</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">sourcemaps</span><span class="pun">.</span><span class="pln">init</span><span class="pun">())</span><span class="pln"> </span><span class="com">// sourcemap init</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">sassPipe</span><span class="pun">())</span><span class="pln"> </span><span class="com">// 하단 sassPipe 참조</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">sourcemaps</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="str">'./'</span><span class="pun">))</span><span class="pln">  </span><span class="com">// sourcemap 생성</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulp</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_dest</span><span class="pun">))</span><span class="pln"> </span><span class="com">// css 생성</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulpif</span><span class="pun">(</span><span class="pln">config</span><span class="pun">.</span><span class="pln">browserSync</span><span class="pun">,</span><span class="pln"> browserSync</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">({</span><span class="pln">match</span><span class="pun">:</span><span class="str">'**/*.css'</span><span class="pun">})));</span><span class="pln"> </span><span class="com">// browsersync 사용 시 css 갱신</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'sass-build'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'sprite'</span><span class="pun">,</span><span class="str">'md5-sprite'</span><span class="pun">],</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  </span><span class="com">// 산출물 sass task</span><span class="pln">
+	</span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">.</span><span class="pln">all</span><span class="pun">([</span><span class="pln">
+		del</span><span class="pun">(</span><span class="pln">path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_dest</span><span class="pun">,</span><span class="str">'**/*.css.map'</span><span class="pun">)),</span><span class="pln"> </span><span class="com">// map 파일 삭제</span><span class="pln">
+		</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">resolve</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+			gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="pln">path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_src</span><span class="pun">,</span><span class="pln"> </span><span class="str">'**/*.scss'</span><span class="pun">))</span><span class="pln"> </span><span class="com">// scss 파일 위치</span><span class="pln">
+				</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">plumber</span><span class="pun">(</span><span class="pln">globalOptions</span><span class="pun">.</span><span class="pln">notify</span><span class="pun">))</span><span class="pln">
+				</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">sassPipe</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">))</span><span class="pln"> </span><span class="com">// 하단 sassPipe 참조</span><span class="pln">
+				</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulp</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_dest</span><span class="pun">))</span><span class="pln"> </span><span class="com">// css 생성</span><span class="pln">
+				</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'end'</span><span class="pun">,</span><span class="pln">resolve</span><span class="pun">);</span><span class="pln">
+		</span><span class="pun">})</span><span class="pln">
+	</span><span class="pun">]);</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+</span><span class="pun">...</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> sassPipe</span><span class="pun">(</span><span class="pln">build</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// sass task용 함수</span><span class="pln">
+	</span><span class="kwd">var</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		sass </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// sass 설정</span><span class="pln">
+			outputStyle</span><span class="pun">:</span><span class="pln"> </span><span class="str">'expanded'</span><span class="pun">,</span><span class="pln">
+			indentType</span><span class="pun">:</span><span class="pln"> </span><span class="str">'tab'</span><span class="pun">,</span><span class="pln">
+			indentWidth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln">
+		</span><span class="pun">},</span><span class="pln">
+		autoprefixer</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// autoprefixer 설정</span><span class="pln">
+			browsers</span><span class="pun">:</span><span class="pln"> config</span><span class="pun">.</span><span class="pln">pc </span><span class="pun">?</span><span class="pln">
+						</span><span class="pun">[</span><span class="str">'last 2 versions'</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Edge &gt; 0"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"ie &gt;= 8"</span><span class="pun">]</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="com">//PC옵션</span><span class="pln">
+						</span><span class="pun">[</span><span class="str">"Android &gt; 0"</span><span class="pun">,</span><span class="str">"iOS &gt; 0"</span><span class="pun">,</span><span class="str">"FirefoxAndroid &gt; 0"</span><span class="pun">]</span><span class="pln"> </span><span class="com">//모바일옵션</span><span class="pln">
+		</span><span class="pun">}</span><span class="pln">
+	</span><span class="pun">};</span><span class="pln">
+
+	options</span><span class="pun">.</span><span class="pln">postcss </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+		autoprefixer</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">autoprefixer</span><span class="pun">),</span><span class="pln">
+	</span><span class="pun">];</span><span class="pln">
+
+	</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">build </span><span class="pun">&amp;&amp;</span><span class="pln"> config</span><span class="pun">.</span><span class="pln">urlRebase</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// url rebase</span><span class="pln">
+		options</span><span class="pun">.</span><span class="pln">postcss</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">urlRebase</span><span class="pun">({</span><span class="pln">
+			basePath</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">relative</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_dest</span><span class="pun">,</span><span class="pln">config</span><span class="pun">.</span><span class="pln">urlRebaseOption</span><span class="pun">.</span><span class="pln">basePath</span><span class="pun">),</span><span class="pln">
+			url</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">URL</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+				</span><span class="kwd">var</span><span class="pln"> basePath </span><span class="pun">=</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">relative</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_dest</span><span class="pun">,</span><span class="pln">config</span><span class="pun">.</span><span class="pln">urlRebaseOption</span><span class="pun">.</span><span class="pln">basePath</span><span class="pun">);</span><span class="pln">
+				</span><span class="kwd">var</span><span class="pln"> rebasedUrl </span><span class="pun">=</span><span class="pln"> config</span><span class="pun">.</span><span class="pln">urlRebaseOption</span><span class="pun">.</span><span class="pln">defaultUrl </span><span class="pun">+</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">relative</span><span class="pun">(</span><span class="pln">basePath</span><span class="pun">,</span><span class="pln"> URL</span><span class="pun">);</span><span class="pln">
+				</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> name in config</span><span class="pun">.</span><span class="pln">urlRebaseOption</span><span class="pun">.</span><span class="pln">urlList</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+					</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">config</span><span class="pun">.</span><span class="pln">urlRebaseOption</span><span class="pun">.</span><span class="pln">urlList</span><span class="pun">.</span><span class="pln">hasOwnProperty</span><span class="pun">(</span><span class="pln">name</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+						</span><span class="kwd">var</span><span class="pln"> basePath </span><span class="pun">=</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">basePath</span><span class="pun">,</span><span class="pln"> name</span><span class="pun">);</span><span class="pln">
+						</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">URL</span><span class="pun">.</span><span class="pln">indexOf</span><span class="pun">(</span><span class="pln">basePath</span><span class="pun">)</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+							rebasedUrl </span><span class="pun">=</span><span class="pln"> config</span><span class="pun">.</span><span class="pln">urlRebaseOption</span><span class="pun">.</span><span class="pln">urlList</span><span class="pun">[</span><span class="pln">name</span><span class="pun">]</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">relative</span><span class="pun">(</span><span class="pln">basePath</span><span class="pun">,</span><span class="pln"> URL</span><span class="pun">);</span><span class="pln">
+						</span><span class="pun">}</span><span class="pln">
+					</span><span class="pun">}</span><span class="pln">
+				</span><span class="pun">}</span><span class="pln">
+				</span><span class="kwd">return</span><span class="pln"> rebasedUrl</span><span class="pun">;</span><span class="pln">
+			</span><span class="pun">},</span><span class="pln">
+		</span><span class="pun">}));</span><span class="pln">
+	</span><span class="pun">}</span><span class="pln">
+
+	</span><span class="kwd">var</span><span class="pln"> returnPipe </span><span class="pun">=</span><span class="pln"> lazypipe</span><span class="pun">().</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">sass</span><span class="pun">,</span><span class="pln">options</span><span class="pun">.</span><span class="pln">sass</span><span class="pun">);</span><span class="pln">
+	</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">build</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		returnPipe </span><span class="pun">=</span><span class="pln"> returnPipe</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">postcss</span><span class="pun">,</span><span class="pln">options</span><span class="pun">.</span><span class="pln">postcss</span><span class="pun">);</span><span class="pln">
+	</span><span class="pun">}</span><span class="pln">
+
+	</span><span class="kwd">return</span><span class="pln"> returnPipe</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sprite_task">3.2.2. sprite task</h4>
+<div class="paragraph">
+<p>조각 이미지를 하나의 sprite 이미지로 만들고 sass로 쉽게 사용할 수 있도록 만들어 주는 task 입니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="pln">gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'sprite'</span><span class="pun">,[</span><span class="str">'makeSprite'</span><span class="pun">,</span><span class="str">'makeSpriteMap'</span><span class="pun">]);</span><span class="pln">
+
+gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'makeSprite'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	</span><span class="kwd">var</span><span class="pln"> stream_arr </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+	</span><span class="kwd">var</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		spritesmith</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">folder</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// spritesmith 설정</span><span class="pln">
+			</span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+				imgPath</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">posix</span><span class="pun">.</span><span class="pln">relative</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_dest</span><span class="pun">,</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">posix</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">sprite_dest</span><span class="pun">,</span><span class="pln"> </span><span class="str">'sp_'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> folder </span><span class="pun">+</span><span class="pln"> </span><span class="str">'.png'</span><span class="pun">)),</span><span class="pln">
+				imgName</span><span class="pun">:</span><span class="pln"> </span><span class="str">'sp_'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> folder </span><span class="pun">+</span><span class="pln"> </span><span class="str">'.png'</span><span class="pun">,</span><span class="pln">
+				cssName</span><span class="pun">:</span><span class="pln"> </span><span class="str">'_sp_'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> folder </span><span class="pun">+</span><span class="pln"> </span><span class="str">'.scss'</span><span class="pun">,</span><span class="pln">
+				cssFormat</span><span class="pun">:</span><span class="pln"> </span><span class="str">'scss'</span><span class="pun">,</span><span class="pln">
+				padding</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln">
+				cssTemplate</span><span class="pun">:</span><span class="pln"> </span><span class="str">'./gulpconf/sprite_template.hbs'</span><span class="pun">,</span><span class="pln">
+				cssSpritesheetName</span><span class="pun">:</span><span class="pln"> </span><span class="str">'sp_'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> folder</span><span class="pun">,</span><span class="pln">
+			</span><span class="pun">}</span><span class="pln">
+		</span><span class="pun">},</span><span class="pln">
+	</span><span class="pun">};</span><span class="pln">
+
+	getFolders</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">sprite_src</span><span class="pun">).</span><span class="pln">map</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">folder</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// sprite 경로의 하위 디렉토리 리스트를 읽는 함수</span><span class="pln">
+			</span><span class="kwd">var</span><span class="pln"> spriteData </span><span class="pun">=</span><span class="pln"> gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="pln">path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">sprite_src</span><span class="pun">,</span><span class="pln"> folder</span><span class="pun">,</span><span class="pln"> </span><span class="str">'*.png'</span><span class="pun">))</span><span class="pln">
+				</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">plumber</span><span class="pun">(</span><span class="pln">globalOptions</span><span class="pun">.</span><span class="pln">notify</span><span class="pun">))</span><span class="pln">
+				</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">spritesmith</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">spritesmith</span><span class="pun">(</span><span class="pln">folder</span><span class="pun">)));</span><span class="pln">
+			stream_arr</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">resolve</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+				spriteData</span><span class="pun">.</span><span class="pln">img
+					</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulp</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">sprite_dest</span><span class="pun">))</span><span class="pln">
+					</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'end'</span><span class="pun">,</span><span class="pln">resolve</span><span class="pun">);</span><span class="pln">
+			</span><span class="pun">}));</span><span class="pln">
+			stream_arr</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">resolve</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+				spriteData</span><span class="pun">.</span><span class="pln">css
+					</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulp</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="pln">path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_src</span><span class="pun">,</span><span class="pln"> </span><span class="str">'sprite'</span><span class="pun">)))</span><span class="pln">
+					</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'end'</span><span class="pun">,</span><span class="pln"> resolve</span><span class="pun">);</span><span class="pln">
+			</span><span class="pun">}));</span><span class="pln">
+		</span><span class="pun">});</span><span class="pln">
+
+	</span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Promise</span><span class="pun">.</span><span class="pln">all</span><span class="pun">(</span><span class="pln">stream_arr</span><span class="pun">);</span><span class="pln"> </span><span class="com">// 모든 sprite용 stream 실행</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'makeSpriteMap'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'makeSprite'</span><span class="pun">],</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="com">// sprite map 생성 task</span><span class="pln">
+	</span><span class="kwd">var</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		maps</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+			handlebars</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+				prefix</span><span class="pun">:</span><span class="pln"> </span><span class="str">'sp_'</span><span class="pun">,</span><span class="pln">
+				exe</span><span class="pun">:</span><span class="pln"> </span><span class="str">'scss'</span><span class="pun">,</span><span class="pln">
+				path</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">posix</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_src</span><span class="pun">,</span><span class="pln"> </span><span class="str">'sprite'</span><span class="pun">),</span><span class="pln">
+				</span><span class="kwd">import</span><span class="pun">:</span><span class="pln"> getFolders</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">sprite_src</span><span class="pun">),</span><span class="pln">
+			</span><span class="pun">}</span><span class="pln">
+		</span><span class="pun">},</span><span class="pln">
+	</span><span class="pun">};</span><span class="pln">
+
+	</span><span class="kwd">return</span><span class="pln"> gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="str">'gulpconf/sprite_maps_template.hbs'</span><span class="pun">)</span><span class="pln"> </span><span class="com">// sprite_maps_template.hbs를 이용하여 map 생성</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">plumber</span><span class="pun">(</span><span class="pln">globalOptions</span><span class="pun">.</span><span class="pln">notify</span><span class="pun">))</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">handlebars</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">maps</span><span class="pun">.</span><span class="pln">handlebars</span><span class="pun">))</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">rename</span><span class="pun">(</span><span class="str">'_sprite_maps.scss'</span><span class="pun">))</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulp</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="pln">path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">paths</span><span class="pun">.</span><span class="pln">css_src</span><span class="pun">,</span><span class="pln"> </span><span class="str">'import'</span><span class="pun">)));</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ftp_task">3.2.3. ftp task</h4>
+<div class="sect4">
+<h5 id="___6">플러그인 소개</h5>
+<div class="paragraph">
+<p>View(php파일의 렌더링 혹은 각종 UI 테스트 용도) 테스트를 위한 FTP 서버인 <a href="http://view.ui.naver.com/" class="bare">http://view.ui.naver.com/</a> 에 파일을 수동으로 업로드하지 않고 작업중인 브랜치와 연동해 업로드해주는 플러그인.</p>
+</div>
+<div class="paragraph">
+<p>현재 작업 중인 GIT 브랜치명과 연동됨. 예를 들어 develop 브랜치에서 작업 후 업로드 시 아래와 같이 브랜치명을 기준으로 폴더를 자동으로 생성해 줌.</p>
+</div>
+<div class="paragraph">
+<p>/RND/taskrunner/develop</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="___7">설정 및 옵션 설명</h5>
+<div class="paragraph">
+<p>필수 userKey 및 remotePath와 관련한 설정 방법은 <a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#ftp_setting">ftp 설정</a> 부분을 참조 한다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="pln">gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'ftp'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	</span><span class="kwd">var</span><span class="pln"> opt</span><span class="pun">.</span><span class="pln">ions </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+		ftp</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+			host</span><span class="pun">:</span><span class="pln"> </span><span class="str">'view.ui.naver.com'</span><span class="pun">,</span><span class="pln">
+			port</span><span class="pun">:</span><span class="pln"> </span><span class="str">'2001'</span><span class="pun">,</span><span class="pln">
+			userKeyFile</span><span class="pun">:</span><span class="pln"> </span><span class="str">'.ftppass'</span><span class="pun">,</span><span class="pln"> </span><span class="com">//[TODO] .ftppass파일 생성 및 .gitignore 추가 필수</span><span class="pln">
+			userKey</span><span class="pun">:</span><span class="pln"> </span><span class="str">'key1'</span><span class="pun">,</span><span class="pln">
+			parallel</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="com">//병렬 전송 갯수 </span><b class="conum"><span class="com">(1)</span></b><span class="pln">
+			remotePath</span><span class="pun">:</span><span class="pln"> </span><span class="str">''</span><span class="pun">,</span><span class="pln"> </span><span class="com">//[TODO] 각 서비스 업로드 경로 설정 필수. (VIEW서버 기준) </span><b class="conum"><span class="com">(2)</span></b><span class="pln">
+			log</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+		</span><span class="pun">},</span><span class="pln">
+	</span><span class="pun">};</span><span class="pln">
+
+	</span><span class="kwd">var</span><span class="pln"> conn </span><span class="pun">=</span><span class="pln"> ftp</span><span class="pun">.</span><span class="pln">create</span><span class="pun">(</span><span class="pln">vfb</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">ftp</span><span class="pun">));</span><span class="pln">
+
+	</span><span class="kwd">return</span><span class="pln"> gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">([</span><span class="str">'src/**'</span><span class="pun">],</span><span class="pln"> </span><span class="pun">{</span><span class="pln">buffer</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">})</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">plumber</span><span class="pun">(</span><span class="pln">globalOptions</span><span class="pun">.</span><span class="pln">notify</span><span class="pun">))</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">conn</span><span class="pun">.</span><span class="pln">newer</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">finalRemotePath</span><span class="pun">))</span><span class="pln">
+		</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">conn</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="pln">options</span><span class="pun">.</span><span class="pln">finalRemotePath</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>한번에 병렬 전송될 파일의 갯수를 지정하는 값으로 기본값은 3이며, 10이상 효과 미비함.</p>
+</li>
+<li>
+<p>'예)/RND/taskrunner'과 같이 <a href="http://view.ui.naver.com/" class="bare">http://view.ui.naver.com/</a> 뒤쪽 경로를 서비스별로 설정(필수값). 루트폴더('/')로 설정시 오류 발생.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_autoprefixer">3.2.4. autoprefixer</h4>
+<div class="sect4">
+<h5 id="___8">플러그인 소개</h5>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<a href="https://github.com/postcss/autoprefixer" class="bare">https://github.com/postcss/autoprefixer</a>, <a href="https://www.npmjs.com/package/gulp-autoprefixer" class="bare">https://www.npmjs.com/package/gulp-autoprefixer</a>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Can I Use 데이터를 기반으로 벤더 프리픽스를 자동으로 변경해 주는 플러그인.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-css" data-lang="css"><span class="pun">:</span><span class="pln">fullscreen a </span><span class="pun">{</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> flex
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>적용전</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-css" data-lang="css"><span class="pun">:-</span><span class="pln">webkit</span><span class="pun">-</span><span class="pln">full</span><span class="pun">-</span><span class="pln">screen a </span><span class="pun">{</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="pln">webkit</span><span class="pun">-</span><span class="pln">box</span><span class="pun">;</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> flex
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">:-</span><span class="pln">moz</span><span class="pun">-</span><span class="pln">full</span><span class="pun">-</span><span class="pln">screen a </span><span class="pun">{</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> flex
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">:-</span><span class="pln">ms</span><span class="pun">-</span><span class="pln">fullscreen a </span><span class="pun">{</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="pln">ms</span><span class="pun">-</span><span class="pln">flexbox</span><span class="pun">;</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> flex
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">:</span><span class="pln">fullscreen a </span><span class="pun">{</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="pln">webkit</span><span class="pun">-</span><span class="pln">box</span><span class="pun">;</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> </span><span class="pun">-</span><span class="pln">ms</span><span class="pun">-</span><span class="pln">flexbox</span><span class="pun">;</span><span class="pln">
+    display</span><span class="pun">:</span><span class="pln"> flex
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>적용후</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="___9">설정 및 옵션 설명</h5>
+<div class="paragraph">
+<p><a href="http://view.gitlab2.uit.nhncorp.com/RND/taskrunner/raw/master/doc/gulp.html#default_setting">기능 설정하기</a>에서 PC / 모바일 두가지 옵션을 제공하여 각각에 맞는 환경 값으로 적용 가능함.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="kwd">var</span><span class="pln"> config </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	PC</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>기본 PC, 모바일 지원 범위는 다음과 같으며 각 서비스 지원 범위에 맞게 직접 수정 가능.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="pln">autoprefixer</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+	browsers</span><span class="pun">:</span><span class="pln"> config</span><span class="pun">.</span><span class="pln">pc </span><span class="pun">?</span><span class="pln">
+				</span><span class="pun">[</span><span class="str">'last 2 versions'</span><span class="pun">,</span><span class="pln"> </span><span class="str">"Edge &gt; 0"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"ie &gt;= 8"</span><span class="pun">]</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="com">//PC옵션</span><span class="pln">
+				</span><span class="pun">[</span><span class="str">"Android &gt; 0"</span><span class="pun">,</span><span class="str">"iOS &gt; 0"</span><span class="pun">,</span><span class="str">"FirefoxAndroid &gt; 0"</span><span class="pun">]</span><span class="pln"> </span><span class="com">//모바일옵션</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>PC 기본 환경</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>last 2 versions :</strong> 모던 브라우저의 경우 최신 두가지 메이저 버전에 대해 지원</p>
+</li>
+<li>
+<p><strong>Edge &gt; 0 :</strong> Edge 용 prefix</p>
+</li>
+<li>
+<p><strong>ie &gt;= 8 :</strong> IE8 이상</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>모바일 환경</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>"Android &gt; 0","iOS &gt; 0","FirefoxAndroid &gt; 0" :</strong> 안드로이드, iOS, FirefoxAndroid 환경</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_notification_task">3.2.5. notification task</h4>
+<div class="sect4">
+<h5 id="___10">플러그인 소개</h5>
+<div class="paragraph">
+<p>gulp task 실행 시 command line 에만 error 메세지가 출력되어,
+watch 태스크를 실행한 상태에서 작업시 error 상황을 인지하기가 쉽지 않은 점을 보완하기 위해 추가된 플러그인입니다.</p>
+</div>
+<div class="paragraph">
+<p>에러 메세지를 간결하게 하거나 추가 정보를 출력해 줄수도 있고,
+기본으로 출력되는 command line외에 OS에서 제공되는 별도의 알림영역에 메세지를 띄울수 있습니다.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+macOS : notification center, Windows : 트레이 알림 영역
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="___11">설정 및 옵션 설명</h5>
+<div class="paragraph">
+<p>기본 플러그인 사용 방법은 아래와 같습니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code><span class="kwd">var</span><span class="pln"> notify </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">"gulp-notify"</span><span class="pun">);</span><span class="pln">
+gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="str">"./src/test.ext"</span><span class="pun">)</span><span class="pln">
+  </span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">notify</span><span class="pun">(</span><span class="str">"Found file: &lt;%= file.relative %&gt;!"</span><span class="pun">));</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+notify 단독 사용시 error 발생 후 해당 task가 중단됩니다.
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>에러 발생 후 task 중단 없이 지속적으로 사용하기 위해서는 gulp-plumber 플러그인과 함꼐 사용해야 합니다</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code><span class="pln">gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="str">"../test/fixtures/*"</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">plumber</span><span class="pun">({</span><span class="pln">errorHandler</span><span class="pun">:</span><span class="pln"> notify</span><span class="pun">.</span><span class="pln">onError</span><span class="pun">({</span><span class="pln">
+        title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'&lt;%= error.relativePath %&gt;'</span><span class="pun">,</span><span class="pln">
+        message</span><span class="pun">:</span><span class="pln"> </span><span class="str">'&lt;%= error.line %&gt; line - &lt;%= error.messageOriginal %&gt;'</span><span class="pun">,</span><span class="pln">
+        </span><span class="pun">})</span><span class="pln">
+    </span><span class="pun">}))</span><span class="pln">
+    </span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">through</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="str">"error"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Error</span><span class="pun">(</span><span class="str">"Something happend: Error message!"</span><span class="pun">))</span><span class="pln">
+    </span><span class="pun">}));</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_browsersync_task">3.2.6. browserSync task</h4>
+<div class="sect4">
+<h5 id="___12">플러그인 소개</h5>
+<div class="paragraph">
+<p>node.js 기반 어플리케이션으로, 웹서버를 이용해 기본적으로 브라우저의 livereload를 지원해줍니다.</p>
+</div>
+<div class="paragraph">
+<p>흥미로운 기능으로 여러개의 브라우저를 실행한 경우 하나의 브라우저에서 클릭, 스크롤 등의 이벤트가 발생한 경우, 나머지 다수의 브라우저에서도 동시에 동일한 이벤트를 발생시켜 테스트를 자동화할수 있도록 해줍니다.(ghostMode)</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.browsersync.io/docs/gulp">browserSync + Gulp.js</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="___13">설정 및 옵션 설명</h5>
+<div class="paragraph">
+<p>기본 플러그인 사용 방법은 아래와 같습니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code><span class="com">// Static server</span><span class="pln">
+gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'browser-sync'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    browserSync</span><span class="pun">.</span><span class="pln">init</span><span class="pun">({</span><span class="pln">
+        server</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            baseDir</span><span class="pun">:</span><span class="pln"> </span><span class="str">"./"</span><span class="pun">,</span><span class="pln"> </span><span class="com">// 기본 디렉토리를 지정합니다.</span><span class="pln">
+            directory</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">  </span><span class="com">// 디렉토리의 파일리스트를 보여줍니다.</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        open</span><span class="pun">:</span><span class="pln"> </span><span class="str">'external'</span><span class="pun">,</span><span class="pln"> </span><span class="com">// localhost대신 ip로 엽니다.</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+gulp</span><span class="pun">.</span><span class="pln">task</span><span class="pun">(</span><span class="str">'sass'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> gulp</span><span class="pun">.</span><span class="pln">src</span><span class="pun">(</span><span class="str">"app/scss/*.scss"</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">sass</span><span class="pun">())</span><span class="pln">
+        </span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">gulp</span><span class="pun">.</span><span class="pln">dest</span><span class="pun">(</span><span class="str">"app/css"</span><span class="pun">))</span><span class="pln">
+        </span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">browserSync</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">());</span><span class="pln"> </span><span class="com">// sass파일 컴파일 후 브라우저 싱크로 stream 전달.</span><span class="pln">
+</span><span class="pun">});</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_minify_task">3.2.7. minify task</h4>
+<div class="paragraph">
+<p>clean-css를 이용하여 CSS를 최적화합니다.<br>
+원본 CSS의 선택자/속성 변경 등이 이루어지는 옵션은 false로 지정했습니다.<br>
+자세한 내용은 <a href="https://github.com/jakubpawlowicz/clean-css">clean-css</a>의 문서를 참고 바랍니다.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight prettyprinted"><code class="language-javascript" data-lang="javascript"><span class="kwd">var</span><span class="pln"> options </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    cleanCSS</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="str">'aggressiveMerging'</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln"> </span><span class="com">// 속성 병합 false</span><span class="pln">
+        </span><span class="str">'restructuring'</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">     </span><span class="com">// 선택자의 순서 변경 false</span><span class="pln">
+        </span><span class="str">'mediaMerging'</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">,</span><span class="pln">      </span><span class="com">// media query 병합 false</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-11-29 14:27:10 KST
+</div>
+</div>
+<link rel="stylesheet" href="./Gulp 가이드_files/prettify.min.css">
+<script src="./Gulp 가이드_files/prettify.min.js.다운로드"></script>
+<script>prettyPrint()</script>
+
+</body></html>

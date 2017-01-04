@@ -1,0 +1,220 @@
+@charset "UTF-8";
+/* NHN Technology Services UI Developent Team KSH 161114	*/
+/* _variables.scss */
+/*_placeholders.scss */
+.lnb .lnb_list:after,.pop_search_wrap .tab:after,.movie .item_inner:after{content:'';display:block;clear:both}
+header .prev_wrap .link,.sort .sort_list .link:before,footer .search_wrap .btn_remove,footer .search_wrap .submit,footer .top_move_wrap .link:after{background-image:url("../img/sp_movie_gnb_1604.png");background-repeat:no-repeat;background-size:300px 200px}
+footer .rules_wrap .link{background-image:url("../img/ico_arr_v2.png");background-repeat:no-repeat;background-size:3px 5px}
+[class^=ico_rank],[class^=ico_grade],.set_location .btn_wrap .ico_location{background-image:url("../img/sp_ico_mv_1605.png");background-repeat:no-repeat;background-size:30px 750px;vertical-align:top}
+.movie .exp .rate,.movie .exp .rate_mask{background-image:url("../img/sp_movie_end_1410.png");background-repeat:no-repeat;background-size:250px 350px}
+.plugin .spi_wrap .link{background-image:url("../img/sp_spi.png");background-repeat:no-repeat;background-size:250px 265px;vertical-align:top}
+.pop_search .rank_num,.pop_search .link em{background-image:url("../img/ico_sp_rank.png");background-repeat:no-repeat}
+.page .btn{background-image:url("../img/u_pg3.png");background-repeat:no-repeat}
+.day_select_wrap .select_box .btn{background-image:url("../img/bt.gif");background-repeat:repeat-x}
+.day_select_wrap .select_box .txt_wrap{background-image:url("../img/sel2ib.png");background-repeat:no-repeat}
+.timetable_wrap .link.area{background-image:url("../img/bu_lk.gif");background-repeat:no-repeat;background-position:100% 50%}
+/* _mixins.scss */
+/* _base.scss */
+/* reset */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-size:14px;color:#000}
+html[lang=ko] body,html[lang=ko] input,html[lang=ko] textarea,html[lang=ko] select,html[lang=ko] button,html[lang=ko] table{font-family:Helvetica,sans-serif}
+html[lang=en] body,html[lang=en] input,html[lang=en] textarea,html[lang=en] select,html[lang=en] button,html[lang=en] table{font-family:Arial,Helvetica,sans-serif}
+html[lang=th] body,html[lang=th] input,html[lang=th] textarea,html[lang=th] select,html[lang=th] button,html[lang=th] table{font-family:Meiryo,sans-serif}
+img,fieldset{border:0}
+table{border-collapse:collapse}
+ul,ol{list-style:none}
+em,address{font-style:normal}
+a{text-decoration:none;cursor:pointer;color:#000}
+a[href]:hover,a[href]:active,a[href]:focus{text-decoration:none}
+label,button{cursor:pointer}
+button{border:none}
+textarea{overflow:auto;resize:none}
+hr{display:none}
+.u_skip,.blind,legend{overflow:hidden;position:absolute;clip:rect(0 0 0 0);width:0;height:0;margin:-1px;padding:0;font-size:1px;line-height:0;color:transparent}
+/*caption {	overflow:hidden;	position:static;	clip:rect(0 0 0 0);	width:0;	height:0;	margin:-1px;	padding:0;	font-size:1px;	line-height:0;	color:transparent;}*/
+/* _cineplex_common.scss */
+/* layout */
+body{height:100%;word-wrap:break-word;word-break:break-all}
+/* lnb */
+.lnb{border-bottom:1px solid #e1e1e1;background-color:#fafafa}
+.lnb .lnb_list{margin-bottom:-1px}
+.lnb .item{float:left;width:50%}
+.lnb .item .link{display:block;position:relative;text-align:center}
+.lnb .item .link_menu{display:inline-block;padding:0 5px;font-size:16px;height:42px;line-height:42px;white-space:nowrap}
+.lnb .item + .item .link:before{display:block;position:absolute;top:0;left:0;bottom:0;width:1px;height:18px;margin:auto;background-color:rgba(0,0,0,0.1);content:''}
+.lnb .item.on .link_menu{margin:9px 0;background-color:#00c73c;font-weight:bold;color:#fff;height:24px;line-height:24px}
+/* header */
+header{position:relative;top:0;left:0;width:100%;height:41px;background-color:#fff;border-bottom:1px solid #e5e5e5;text-align:center;color:#000;/* item */ }
+header .prev_wrap{top:5px;left:0;position:absolute;white-space:nowrap}
+header .prev_wrap .link{border:none;display:inline-block;vertical-align:middle;overflow:hidden;margin-left:5px;background-position:-145px -115px;width:31px;height:31px;background-color:transparent}
+header .title_wrap{overflow:hidden;margin:0 36px;font-size:17px;font-weight:normal;line-height:41px;text-align:center}
+header .title_wrap .link{display:block;overflow:hidden;font-size:17px;white-space:nowrap;text-overflow:ellipsis}
+/* 영화 정렬 */
+.sort .sort_list{overflow:hidden;border-bottom:1px solid #d6d6d6}
+.sort .sort_list .item{float:left;color:#666;font-size:14px}
+.sort .sort_list .link{display:block;padding:11px 0 8px 11px}
+.sort .sort_list .link:before{display:inline-block;width:13px;height:14px;background-position:-75px -122px;margin:3px 4px 0 0;vertical-align:top;content:''}
+.sort .sort_list .item.on .link{color:#00c73c}
+.sort .sort_list .item.on .link:before{background-position:-185px -120px}
+/* 영화 인기 검색 */
+.pop_search_wrap{margin-top:30px;border-top:1px solid #494949;background-color:#fff}
+.pop_search_wrap .tab .item:first-child{border-left:none;margin-right:-1px}
+.pop_search_wrap .tab .item{display:block;float:left;width:50%;height:34px;border-top:1px solid #fafafa;border-left:1px solid #aeaeae}
+.pop_search_wrap .tab .item .link{display:block;height:25px;text-align:center;padding-top:7px;color:#000}
+.pop_search_wrap .tab .on{border-top:none;border-bottom:1px solid #aeaeae}
+.pop_search_wrap .tab .on .link{border:1px solid #e1e1e1;background-color:#f3f3f3;color:#777}
+/* 영화 인기 검색 순위 */
+.pop_search .item{position:relative;border-bottom:1px solid #ededed}
+.pop_search .link{display:block;position:relative}
+.pop_search .rank_txt{max-width:80%;height:23px;overflow:hidden;text-overflow:ellipsis;padding:8px 0 2px 10px;white-space:nowrap;word-wrap:normal}
+.pop_search .rank_num{display:inline-block;float:left;width:14px;height:13px;margin-right:7px;margin-top:3px;background-position:0 0;color:#fff;font-family:Tahoma,Helvetica;font-size:9px;line-height:13px;text-align:center;font-weight:bold}
+.pop_search .link p{display:inline-block;position:absolute;right:10px;top:9px;width:31px;height:30px}
+.pop_search .link em{display:inline-block;position:absolute;right:0;color:#999;font-size:11px;font-family:Helvetica}
+.pop_search .link .default{left:0px;top:7px;width:7px;height:2px;background-position:-15px 0}
+.pop_search .link .up{left:0px;top:4px;width:8px;height:9px;background-position:0 -15px}
+.pop_search .link .down{left:0px;top:4px;width:8px;height:9px;background-position:-10px -15px}
+.pop_search .link .num{background:none}
+.pop_search .item:last-child{height:36px;border-bottom:1px solid #c9c9c9}
+.pop_search .default_date{padding-top:2px;padding-right:10px;text-align:right;font-family:Helvetica;color:#999;font-size:11px}
+/* footer */
+footer{position:relative;padding-top:13px;background-color:#fff}
+footer .unified_search{padding:0 0 2px}
+footer .search_wrap{padding-right:111px;background-color:#fff;overflow:hidden;position:relative;padding:4px 111px 8px 10px}
+footer .search_wrap_inner{position:relative;height:24px;padding:7px 39px 0 9px;border:1px solid #cecece;background-color:#fff}
+footer .search_wrap .ipt_search{font-size:14px;color:#1a1a1a;width:100%;border:0}
+footer .search_wrap .btn_remove{background-position:-171px -81px;background-color:transparent;top:2px;overflow:hidden;position:absolute;right:5px;z-index:10;width:27px;height:27px;margin:0;padding:0;border:0;text-indent:40px;white-space:nowrap;cursor:pointer}
+footer .search_wrap .submit{position:absolute;top:4px;font-size:13px;height:33px;line-height:29px;background-color:#fff;color:#555;border:0}
+footer .search_wrap .submit_search_btn{background-position:-1px -114px;right:79px;width:32px;background-color:#f9f9f9;border:1px solid #cecece;border-left:0}
+footer .search_wrap .submit_unified_btn{width:65px;line-height:28px;border:1px solid #cecece;right:10px;white-space:nowrap}
+footer .top_move_wrap{overflow:hidden;clear:both;width:100%;padding:0 0 10px;font-size:13px;white-space:nowrap}
+footer .top_move_wrap .link{display:block;height:31px;margin:0 10px;border:1px solid #e4e4e4;color:#444;line-height:31px;text-align:center}
+footer .top_move_wrap .link:after{display:inline-block;width:7px;height:4px;margin:13px 0 0 3px;background-position:-45px -122px;vertical-align:top;content:''}
+footer .footer_link_wrap{border-top:1px solid #dfe1e3;background-color:#f2f3f4;text-align:center}
+footer .footer_link_wrap .link{display:inline-block;margin-top:16px;padding:0 9px 0 10px;border:1px solid #d7d7d8;background-color:#fcfcfc;color:#555;font-size:12px;line-height:25px}
+footer .footer_info_wrap{background-color:#f2f3f4;font-size:12px;color:#666;line-height:15px;text-align:left}
+footer .footer_info_wrap .copyright{padding:18px 15px 0;color:#777;letter-spacing:-0.5px}
+footer .footer_info_wrap .business{display:block;position:relative;padding:31px 15px 0 15px;font-size:11px;line-height:16px}
+footer .footer_info_wrap .business > dt{color:#999}
+footer .footer_info_wrap .business > dd{display:block;overflow:hidden;margin-top:-16px;padding-left:114px;color:#555}
+footer .footer_info_wrap .business:after{position:absolute;top:18px;height:0;left:15px;right:15px;border-bottom:1px solid #dcdcdc;content:''}
+footer .rules_wrap{position:relative;padding:10px 10px 10px 17px}
+footer .rules_wrap .link{display:inline-block;padding-right:6px;background-position:100% 7px;font-size:11px;color:#333;line-height:20px}
+footer .rules_wrap:after{position:absolute;bottom:-1px;left:17px;right:17px;border-bottom:1px solid #dcdcdc;content:''}
+footer .footer_address_wrap{padding:19px 0 17px;background-color:#f2f3f4;font-size:11px;line-height:14px;color:#999;text-align:center}
+footer .footer_address_wrap .item{display:inline-block;margin:0 2px}
+footer .footer_address_wrap .link{color:#999}
+footer .footer_address_wrap .report{position:relative;padding-left:9px}
+footer .footer_address_wrap .report:before{display:inline-block;position:absolute;top:2px;left:0;width:1px;height:9px;background-color:#d9d9d9;content:''}
+footer .footer_address_wrap .corporation{display:block;padding-top:5px}
+footer .footer_address_wrap .corporation .link{font-family:Helvetica;font-size:11px}
+/* _cineplex_current_movie_contents.scss */
+[class^=ico_rank]{position:absolute;top:0;left:0;width:30px;height:30px;padding:2px 13px 0 0;font-size:12px;color:#fff;font-family:HelveticaNeue-Medium,Helvetica,sans-serif;letter-spacing:-1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+[class^=ico_grade]{display:inline-block;width:18px;height:18px;margin:0 4px 0 0;vertical-align:-3px}
+/* content */
+/*영화 예매 리스트 */
+.movie{/* item */ /* poster */ /* exp */ }
+.movie .item{position:relative;border-bottom:1px solid #e3e3e3}
+.movie .item_inner{position:relative;padding:13px 10px}
+.movie .poster{float:left;position:relative;margin-right:15px;text-align:center;vertical-align:middle}
+.movie .poster .link{display:inline-block}
+.movie .poster .ico_rank{background-position:0 -130px}
+.movie .poster .ico_rank_top{background-position:0 -90px}
+.movie .exp{overflow:hidden}
+.movie .exp .link{display:block}
+.movie .exp .str{vertical-align:top;font-weight:bold;font-size:14px;line-height:16px}
+.movie .exp .str .txt{font-weight:normal;color:#666}
+.movie .exp .br{display:inline-block;overflow:hidden;width:1px;height:10px;margin:0 3px 0 2px;background:#dedede}
+.movie .exp .subject{overflow:hidden;width:100%;line-height:1em;text-overflow:ellipsis;white-space:nowrap;font-size:16px}
+.movie .exp .ic1001001{width:26px;background-position:0 -420px}
+.movie .exp .ic1001002{background-position:0 -440px}
+.movie .exp .ic1001003{background-position:0 -460px}
+.movie .exp .ic1001004{width:26px;background-position:0 -480px}
+.movie .exp .status{overflow:hidden;width:100%;margin:4px 0 2px;line-height:1em;vertical-align:top;white-space:nowrap;text-overflow:ellipsis}
+.movie .exp .rate{display:inline-block;position:relative;top:2px;width:12px;height:12px;margin-right:-1px;text-align:left;background-position:-120px -40px}
+.movie .exp .rate_mask{display:inline-block;width:12px;margin-right:-1px;overflow:hidden;height:100%;background-position:-120px -10px}
+.movie .exp .rate_mask img{display:block;height:100%;width:12px;margin-right:-1px}
+.movie .exp .info{display:inline-block;overflow:hidden;width:100%;margin-top:-1px;text-overflow:ellipsis;white-space:nowrap;font-size:14px;line-height:18px;color:#666}
+.movie .exp .btn_wrap{margin-top:5px}
+.movie .exp .btn{-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;border-radius:2px;font-family:AppleSDGothicNeo-Medium,Helvetica,sans-serif;display:inline-block;height:27px;line-height:27px;overflow:hidden;background-color:#ef5151;font-size:13px;color:#fff;text-align:center;vertical-align:middle;white-space:nowrap;padding:0 10px}
+/* 영화 페이징 */
+.page{padding:15px 0 10px;border-bottom:none;position:relative;margin-top:-1px;border-top:solid 1px #e0e0e0;text-align:center}
+.page .btn_wrap{display:inline-block;overflow:hidden;padding:9px 18px 9px 17px;border:1px solid #bbb;background:#f0f0f0;background:-webkit-gradient(linear,0 0,0 100%,from(#fafafa),color-stop(0.05,#fbfbfb),to(#f0f0f0));font-size:0;vertical-align:top;-webkit-box-shadow:inset 0 1px #fefefe;box-shadow:inset 0 1px #fefefe;-webkit-appearance:none}
+.page .btn{display:block;overflow:hidden;width:9px;height:14px;background-size:20px 14px;color:transparent}
+.page .btn.prev{background-position:0 0}
+.page .btn.next{background-position:-11px 0}
+.page .page_wrap{display:inline-block;padding:0 3px 0 2px}
+.page .page_wrap .link{display:inline-block;margin-right:-1px;vertical-align:top;padding:3px 3px 4px;border:solid 1px #e2e2e2;background-color:#fefefe;font:13px;line-height:25px;font-family:HelveticaNeue;min-width:26px;color:#999}
+.page .page_wrap .now{border-color:#32cb00;color:#32a800}
+/* 소셜 플러그인 */
+.plugin .spi_wrap{margin:20px auto;max-width:308px;text-align:center}
+.plugin .spi_wrap .spi{display:inline-block;vertical-align:top}
+.plugin .spi_wrap .spug{font-size:0;text-align:left;white-space:nowrap}
+.plugin .spi_wrap .spug a:first-child{margin-left:0}
+.plugin .spi_wrap .spug a{display:inline-block;overflow:hidden;width:34px;height:34px;margin-left:5px;color:transparent}
+.plugin .spi_wrap .sns_blog{background-position:0 -150px}
+.plugin .spi_wrap .sns_cafe{background-position:-40px -150px}
+.plugin .spi_wrap .sns_bookmark{background-position:-120px -150px}
+.plugin .spi_wrap .sns_memo{background-position:-200px -190px}
+.plugin .spi_wrap .sns_pholar{background-position:-160px -150px}
+.plugin .spi_wrap .sns_kakaotalk{background-position:-200px -150px}
+.plugin .spi_wrap .sns_band{background-position:0 -190px}
+.plugin .spi_wrap .sns_share{width:32px;height:32px;background-position:-120px -190px;border:1px solid #dedede;background-color:#fff}
+/* _cineplex_runnung_group_contents.scss */
+.set_location{font-size:13px;position:relative;padding:9px 125px 9px 10px;border-bottom:1px solid #dfdfd9;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.set_location strong{font-weight:normal;color:#000;padding-left:1px}
+.set_location .btn_wrap{position:absolute;top:5px;right:4px}
+.set_location .btn_wrap .btn{position:relative;padding:0 11px;border:none;background:transparent;font-size:13px;font-family:Helvetica,sans-serif;line-height:25px}
+.set_location .btn_wrap .my_location{color:#4783e6}
+.set_location .btn_wrap .ico_location{display:inline-block;padding-left:18px;background-position:0 -395px}
+.set_location .btn_wrap .btn + .btn:before{position:absolute;top:8px;left:-3px;width:1px;height:10px;background-color:#e6e4e4;content:''}
+.day_select_wrap{padding:10px;overflow:hidden;white-space:nowrap;position:relative;border-bottom:0}
+.day_select_wrap .select_box .btn{-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;border-radius:2px;background-position:0 0;width:100%;border:1px solid #c9c9c9;background-color:#f1f1f1;white-space:nowrap;-webkit-appearance:none}
+.day_select_wrap .select_box .txt_wrap{display:block;background-position:100% -7px;text-align:left;overflow:hidden;text-overflow:ellipsis;font-size:13px;white-space:nowrap;padding:2px 30px 2px 7px}
+.day_select_wrap.on{border-bottom:1px solid #b0b0b0}
+.day_select_wrap.on .txt_wrap{background-position:100% -45px}
+.day_select_list_wrap .item{border-bottom:1px solid #e7e7e7;font-size:13px}
+.day_select_list_wrap .item:last-child{border-bottom:0}
+.day_select_list_wrap .link{display:block;overflow:hidden;padding:8px 9px;color:#000;white-space:nowrap;text-overflow:ellipsis}
+.day_select_list_wrap .day_txt{color:#1172b6}
+.timetable_wrap .link.area{display:block;position:relative;padding:10px 0;width:100%;background-color:#f7f7f7;border-top:1px solid #b0b0b0;border-bottom:1px solid #dfdfdf;white-space:nowrap}
+.timetable_wrap .area_txt{padding-left:10px;color:#1172b6;font-size:15px;font-weight:normal}
+.timetable_wrap .distance{color:#909090;font-size:13px;font-weight:bold}
+.timetable_wrap .more{display:block;position:absolute;bottom:10px;right:23px;font-size:13px;color:#666}
+.timetable_wrap .timetable{padding:0;overflow:hidden}
+.timetable_wrap .timetable .title{padding:7px 0 0 10px}
+.timetable_wrap .timetable .list{overflow:hidden;margin:0 0 9px	7px}
+.timetable_wrap .timetable .item{float:left;width:45px;height:23px;margin:8px 0 0 5px;font-size:14px;color:#bebebe;line-height:23px;text-align:center;vertical-align:top}
+.timetable_wrap .timetable .link{display:block;width:42px;height:21px;padding-left:1px;border:1px solid #bcbcbc;background-color:#f1f1f1;line-height:21px;color:#252525;text-align:center;vertical-align:middle;white-space:nowrap}
+.timetable_wrap .timetable + .timetable{border-top:1px solid #dfdfdf}
+.timetable_wrap .timetable:last-child{border-bottom:1px solid #dfdfdf}
+/* _cineplex_seat_reservation_naver.scss */
+.nc{display:none}
+/* 좌석 선택 */
+.selsit{overflow:hidden;border-bottom:1px solid #dedfe4}
+.selsit dt{float:left;margin:12px 0 12px 15px;padding-right:12px;border-right:1px solid #dfe0e5;color:#8c8ea5;font-family:helvetica;font-size:20px;line-height:22px}
+.selsit dt .sel{color:#e80707}
+.selsit dt strong{font-weight:normal}
+.selsit dd{padding-right:10px}
+.selsit dd p{padding:13px 0 0 70px;color:#3e3f51;font-size:12px;letter-spacing:-1px}
+.selsit .sitli{margin-top:5px}
+.selsit .sitli li{float:left;margin-left:9px}
+.selsit .sitli li a{display:inline-block;width:2.79em;padding:0 0.36em;background:url(https://ssl.pstatic.net/static/m/movie/im/ib.png) no-repeat 34px -1127px;color:#3E3F51;font-size:1.07em;font-weight:bold;line-height:23px}
+.seat{margin:5px 10px 9px}
+.seat table{width:100%;border-collapse:separate;border:0;font-size:14px;line-height:16px;font-family:helvetica,sans-serif}
+.seat table caption{padding-bottom:5px;background:url(https://ssl.pstatic.net/static/m/movie/im/ib.png) no-repeat 50% -1178px;color:#9496A9;font-family:helvetica;font-size:12px;font-weight:bold;text-align:center}
+.seat table tr{display:table-row;vertical-align:inherit;border:none}
+.seat table td{height:14px;border:1px solid #fff}
+.seat table td.on{border:1px solid #3c4674 !important;background:#6F7DC0 url(https://ssl.pstatic.net/static/m/movie/im/bg_sit.gif) repeat-x 0 0}
+.seat table td.dim{border:1px solid #cacbd9 !important;background-color:#E3E4EC}
+.seat table td.sel{border:1px solid #c73002 !important;background:#FF4210 url(https://ssl.pstatic.net/static/m/movie/im/bg_sit.gif) repeat-x 0 -42px}
+.seat table td a{display:block;width:100%;height:12px}
+/* reservation button */
+.revbt{clear:both;overflow:hidden;padding:0.43em 0.71em;border-top:1px solid #676877;border-bottom:1px solid #676877;background-color:#838495}
+.revbt div{float:left;width:50%}
+.revbt .bt{display:block;height:32px;border:1px solid #383c54;background:#46465D url(https://ssl.pstatic.net/static/m/movie/im/sp_bg.png) repeat-x 0 -227px;color:#fff;font-size:1.07em;line-height:32px;text-align:center;-webkit-border-radius:2px}
+.revbt .pv .bt{margin-right:2px}
+.revbt .nx .bt{margin-left:2px}
+.revbt .bt.dim{border:1px solid #5f6175 !important;background:#646579 url(https://ssl.pstatic.net/static/m/movie/im/sp_bg.png) repeat-x 0 -389px !important;color:#9fa0b1 !important}
+.revbt .bt.on{border:1px solid #4b4c65 !important;background:#FF2711 url(https://ssl.pstatic.net/static/m/movie/im/sp_bg.png) repeat-x 0 -308px !important;color:#fff !important}
+.revbt .revc{padding-left:14px;background:url(https://ssl.pstatic.net/static/m/movie/im/ib.png) no-repeat 0 -947px}

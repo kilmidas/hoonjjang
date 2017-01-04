@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+/* _cineplex_runnung_group_contents.scss */
+
+// *위치 설정
+.set_location {
+	font-size: 13px;
+	position: relative;
+	padding: 9px 125px 9px 10px;
+	border-bottom: 1px solid #dfdfd9;
+	color: #666;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	strong {
+		font-weight: normal;
+		color: #000;
+		padding-left: 1px;
+	}
+	.btn_wrap {
+		position: absolute;
+		top: 5px;
+		right: 4px;
+
+		.btn {
+			position: relative;
+			padding: 0 11px;
+			border: none;
+			background: transparent;
+			font-size: 13px;
+			font-family: Helvetica, sans-serif;
+			line-height: 25px;
+		}
+		.my_location {
+			color: #4783e6;
+		}
+		.ico_location {
+			@extend %sp_ico;
+
+			display: inline-block;
+			padding-left: 18px;
+			background-position: 0 -395px;
+		}
+		.btn + .btn:before {
+			position: absolute;
+			top: 8px;
+			left: -3px;
+			width: 1px;
+			height: 10px;
+			background-color: #e6e4e4;
+			content: '';
+		}
+
+	}
+}
+// 위치 설정*
+
+// *관람 일자 선택
+.day_select_wrap {
+	padding: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
+	border-bottom: 0;
+
+	.select_box {
+		
+		.btn {
+			@extend %img_bt;
+			@include border-radius(2px);
+
+			background-position: 0 0;	
+			width: 100%;
+			border: 1px solid #c9c9c9;
+			background-color: #f1f1f1;
+			white-space: nowrap;
+			-webkit-appearance: none;
+		}
+		.txt_wrap {
+			@extend %sp_sel2ib;
+
+			display: block;
+			background-position: 100% -7px;
+			text-align: left;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			font-size: 13px;
+			white-space: nowrap;
+			padding: 2px 30px 2px 7px;
+		}
+
+	}
+	&.on {
+		border-bottom: 1px solid #b0b0b0;
+
+		.txt_wrap {
+			background-position: 100% -45px;
+		}
+
+	}
+}
+// 관람 일자 선택*
+
+// *관람 일자 목록 레이어
+.day_select_list_wrap {
+
+	.item {
+		border-bottom: 1px solid #e7e7e7;
+		font-size: 13px;
+	}
+	.item:last-child {
+		border-bottom: 0;
+	}
+	.link {
+		display: block;
+		overflow: hidden;
+		padding: 8px 9px;
+		color: #000;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.day_txt {
+		color: #1172b6;
+	}
+
+}
+// 관람 일자 목록 레이어*
+
+
+// *관람 시간표 목록
+.timetable_wrap {
+
+	.link.area {
+		@extend %img_bu_lk;
+
+		display: block;
+		position: relative;
+		padding: 10px 0;
+		width: 100%;
+		background-color: #f7f7f7;
+		border-top: 1px solid #b0b0b0;
+		border-bottom: 1px solid #dfdfdf;
+		white-space: nowrap;
+	}
+	.area_txt {
+		padding-left: 10px;
+		color: #1172b6;
+		font-size: 15px;
+		font-weight: normal;
+	}
+	.distance {
+		color: #909090;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.more {
+		display: block;
+		position: absolute;
+		bottom: 10px;
+		right: 23px;
+		font-size: 13px;
+		color: #666;
+	}
+	.timetable {
+		padding: 0;
+		overflow: hidden;
+
+		.title {
+			padding: 7px 0 0 10px;
+		}
+		.list {
+			overflow: hidden;
+			margin: 0 0 9px	7px;
+		}
+		.item {
+			float: left;
+			width: 45px;
+			height: 23px;
+			margin: 8px 0 0 5px;
+			font-size: 14px;
+			color: #bebebe;
+			line-height: 23px;
+			text-align: center;
+			vertical-align: top;
+		}
+		.link {
+			display: block;
+			width: 42px;
+			height: 21px;
+			padding-left: 1px;
+			border: 1px solid #bcbcbc;
+			background-color: #f1f1f1;
+			line-height: 21px;
+			color: #252525;
+			text-align: center;
+			vertical-align: middle;
+			white-space: nowrap;
+		}
+
+	}
+	.timetable + .timetable {
+		border-top: 1px solid #dfdfdf;
+	}
+	.timetable:last-child {
+		border-bottom: 1px solid #dfdfdf;
+	}
+
+}

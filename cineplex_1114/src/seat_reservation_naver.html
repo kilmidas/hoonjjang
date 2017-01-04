@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>좌석 예매 : 네이버</title>
+	<link rel="stylesheet" href="./css/cineplex.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	var bType = "BROWSER_TYPE_SAFARI_OVER_iOS_4_2";
+
+	var tot_cnt = 0;
+	var tot_price = 0;
+	var adu_cnt = "2";
+	var stu_cnt = "0";
+	var etc_cnt = "0";
+	var adu_price = "15000";
+	var stu_price = "13000";
+	var etc_price = "0";
+	var adu_price_sum = 0;
+	var stu_price_sum = 0;
+	var etc_price_sum = 0;
+	var price_txt = "";
+
+	var fee_amt = "500";  // 장당수수료
+
+	/* 좌석 선택 관련 변수 */
+	var sel_seat_cnt = 0;
+	var sel_seat_info= "";
+	var sel_seat_txt = "";
+	var sel_seat_info_txt = "";
+
+	$(document).ready(function() {
+
+	    if (parseInt(adu_cnt) + parseInt(stu_cnt) + parseInt(etc_cnt) > 0) {
+	        SelPriceSum();
+	    }
+
+	    var sel_seat = "";
+	    var sel_cnt = "0";
+
+	    if (sel_seat != "") {
+	        sel_seat_cnt = parseInt(sel_cnt);
+	        sel_seat_info = "";
+	        sel_seat_txt = "";
+	        sel_seat_info_txt = "";
+	        $("#sel_seat_txt").html(sel_seat);
+	        $("#sel_seat_cnt").text(sel_cnt);
+	        $("#btnNext").attr("class", "bt on");
+	        $("#btnReSelect").html("<a href=\"javascript:resetSelSeat();\" onclick=\"nclk(this, 'sea.again', '', '')\" class=\"bt\"><span class=\"rf\">좌석 다시선택</span></a>");
+	    }
+	    else {
+	        $("#sel_seat_txt").html("<p>화면을 확대하면 쉽게 선택/취소 할 수 있습니다.</p>");
+	        $("#sel_seat_cnt").text(sel_seat_cnt);
+	        $("#btnReSelect").html("<span class=\"bt dim\"><span class=\"rf\">좌석 다시선택</span></span>");
+	    }
+
+	    $("#tot_seat_cnt").text(tot_cnt);
+
+	});
+
+
+	function SelPriceSum() {
+	    if(adu_cnt > 0) {        
+	        adu_price_sum = parseInt(adu_cnt) * parseInt(adu_price);
+	        price_txt = "성인" + adu_cnt;
+	    }
+
+	    if(stu_cnt > 0) {
+	        stu_price_sum = parseInt(stu_cnt) * parseInt(stu_price);
+	        if(price_txt != ""){
+	            price_txt += ", 학생" + stu_cnt;
+	        }
+	        else{
+	            price_txt = "학생" + stu_cnt;
+	        }
+	    }
+
+	    if(etc_cnt > 0) {
+	       etc_price_sum = parseInt(etc_cnt) * parseInt(etc_price);
+	       if(price_txt != ""){
+	            price_txt += ", 어린이" + etc_cnt;
+	        }
+	        else{
+	            price_txt = "어린이" + etc_cnt;
+	        }    
+	    }
+	            
+	    // 인원,요금 합계
+	    tot_cnt = parseInt(adu_cnt) + parseInt(stu_cnt) + parseInt(etc_cnt);
+	    tot_price = parseInt(adu_price_sum) + parseInt(stu_price_sum) + parseInt(etc_price_sum) + parseInt(fee_amt)*parseInt(tot_cnt);
+	    
+	    if(tot_cnt > 0) {
+	        $("#tot_price").text(changePriceStr(tot_price) + "원");
+	        $("#tot_fee").text("(수수료 "+ changePriceStr(parseInt(fee_amt)*parseInt(tot_cnt)) +"원 포함)");
+	        $("#pay_price_txt").text(changePriceStr(tot_price) + "원");
+	        $("#pay_discount_txt").text("");
+	        $("#price_txt").text(price_txt);
+	    }
+	    else {
+	        $("#tot_price").text("0원");
+	        $("#tot_fee").text("");
+	        $("#pay_discount_txt").text("");
+	        $("#price_txt").text("");
+	    }
+	}
+
+	var IsCgvPrimus = "0";
+	// 좌석 선택 이벤트 함수
+	function selectSeatClick(seatInfo)
+	{
+	    var seatId = "";
+	    var seattitle= "";
+	    
+	    if($("#" + seatInfo).attr("class") == "sel"){
+
+	        seatId = $("#" + seatInfo).attr("Id");
+	        seattitle = $("#" + seatInfo).attr("title");
+	        
+	        // 좌석선택삭제
+	        if ($("#NT_ID").val() == "PRIMUS") {
+	            if (sel_seat_info.indexOf(",") != -1) {
+	                var tmp_array = sel_seat_info.split(",");
+
+	                if (seatId == tmp_array[0]) {
+	                    sel_seat_info = sel_seat_info.replace(seatId + ",", "");
+	                } else {
+	                    sel_seat_info = sel_seat_info.replace("," + seatId, "");
+	                }
+	            } else {
+	                sel_seat_info = sel_seat_info.replace(seatId, "");
+	            }
+	        } else if ($("#NT_ID").val() == "LOTTEC") {
+	            /*
+	            if (sel_seat_info.indexOf("^") != -1) {
+	                var tmp_array = sel_seat_info.split("^");
+
+	                if (seatId == tmp_array[0]) {
+	                    sel_seat_info = sel_seat_info.replace(seatId + "^", "");
+	                } else {
+	                    sel_seat_info = sel_seat_info.replace("^" + seatId, "");
+	                }
+	            } else {
+	                sel_seat_info = sel_seat_info.replace(seatId, "");
+	            }
+	            */
+	            //롯데씨네마 API 변경 : 2016.03.07
+	            if (sel_seat_info.indexOf(",") != -1) {
+	                var tmp_array = sel_seat_info.split(",");
+
+	                if (seatId == tmp_array[0]) {
+	                    sel_seat_info = sel_seat_info.replace(seatId + ",", "");
+	                } else {
+	                    sel_seat_info = sel_seat_info.replace("," + seatId, "");
+	                }
+	            } else {
+	                sel_seat_info = sel_seat_info.replace(seatId, "");
+	            }
+	        }else{
+	            if(sel_seat_info.indexOf("|") != -1) {
+	                var tmp_array1= sel_seat_info.split("|");
+	                
+	                if(seatId == tmp_array1[0]){
+	                    sel_seat_info = sel_seat_info.replace(seatId + "|" , "");
+	                }else{
+	                    sel_seat_info = sel_seat_info.replace("|" + seatId , "");          
+	                }
+	            }else{
+	                sel_seat_info = sel_seat_info.replace(seatId, "");
+	            }
+	        }
+
+	        if(sel_seat_txt.indexOf("|") != -1) {
+	            var tmp_array2 = sel_seat_txt.split("|");
+
+	            if (seattitle == tmp_array2[0]) {
+	                sel_seat_txt = sel_seat_txt.replace(seattitle + "|" , "");
+	            }else{
+	                sel_seat_txt = sel_seat_txt.replace("|" + seattitle , "");
+	            }
+	        }else{
+	            sel_seat_txt = sel_seat_txt.replace(seattitle, "");
+	        }
+
+	        if(sel_seat_info_txt.indexOf("|") != -1) {
+	            var tmp_array3 = sel_seat_info_txt.split("|");
+	            
+	            if(seatId + ":" + seattitle == tmp_array3[0]){
+	                sel_seat_info_txt = sel_seat_info_txt.replace(seatId + ":" + seattitle + "|" , "");
+	            }else{
+	                sel_seat_info_txt = sel_seat_info_txt.replace("|" + seatId + ":" + seattitle , "");          
+	            }
+	        }else{
+	            sel_seat_info_txt = sel_seat_info_txt.replace(seatId + ":" + seattitle, "");
+	        }
+	        
+	        sel_seat_cnt = parseInt(sel_seat_cnt) - 1;
+	        $("#" + seatInfo).attr("class", "on"); 
+	    }else {
+	        if(parseInt(sel_seat_cnt) >= tot_cnt){
+	            if (bType == "BROWSER_TYPE_ANDROID_WEBKIT") {
+	                alert("좌석을 모두 선택하였습니다.\n미리 선택하신 좌석을 지우고 다시 선택해 주세요.");
+	            }else{
+	                alert("좌석을 모두 선택하였습니다.\r\n미리 선택하신 좌석을 지우고 다시 선택해 주세요.");
+	            }            
+	        }else{
+	                       
+	            seatId = $("#" + seatInfo).attr("Id");
+	            seattitle = $("#" + seatInfo).attr("title");
+	            if ($("#NT_ID").val() == "PRIMUS") {
+	                if (sel_seat_info == "") {
+	                    sel_seat_info = seatId;
+	                } else {
+	                    sel_seat_info += "," + seatId;
+	                }
+	            }else if ($("#NT_ID").val() == "LOTTEC") {
+	                if (sel_seat_info == "") {
+	                    sel_seat_info = seatId;
+	                } else {
+	               // sel_seat_info += "^" + seatId;
+	                    sel_seat_info += "," + seatId;
+	                }
+	            }else {
+	                if (sel_seat_info == "") {
+	                    sel_seat_info = seatId;
+	                } else {
+	                    sel_seat_info += "|" + seatId;
+	                }
+	            }
+	            
+	            if(sel_seat_txt == ""){
+	                sel_seat_txt = seattitle;
+	            }else{
+	                sel_seat_txt += "|" + seattitle;
+	            }
+	            
+	            if(sel_seat_info_txt == ""){
+	                sel_seat_info_txt = seatId + ":" + seattitle;
+	            }else{
+	                sel_seat_info_txt += "|" + seatId + ":" + seattitle;
+	            }
+	            
+	            sel_seat_cnt = parseInt(sel_seat_cnt) + 1;    
+	            $("#" + seatInfo).attr("class", "sel");        
+	        }
+	    }
+	    
+	    if(sel_seat_info_txt != ""){
+	        var selSeathtml = "";
+	        selSeathtml = "<ul class=\"sitli\">";
+	        
+	        if(sel_seat_info_txt.indexOf("|") != -1){
+	            var arraySelSeat = sel_seat_info_txt.split("|");
+	            
+	            for(var k=0; k < arraySelSeat.length; k++)
+	            {
+	                var arraySelSeatInfo1 = arraySelSeat[k].split(":");
+	                selSeathtml += "<li><a href=\"javascript:selectSeatClick('"+arraySelSeatInfo1[0]+"');\" onclick=\"nclk(this, 'sea.result', '', '')\">"+arraySelSeatInfo1[1]+"</a></li>";
+	            }
+	        }else{
+	            var arraySelSeatInfo2 = sel_seat_info_txt.split(":");
+	            selSeathtml += "<li><a href=\"javascript:selectSeatClick('"+arraySelSeatInfo2[0]+"');\" onclick=\"nclk(this, 'sea.result', '', '')\">"+arraySelSeatInfo2[1]+"</a></li>";
+	        } 
+	        
+	        selSeathtml += "</ul>";
+	        $("#sel_seat_txt").html(selSeathtml);
+	    }else{
+	        $("#sel_seat_txt").html("<p>화면을 확대하면 쉽게 선택/취소 할 수 있습니다.</p>");
+	    }
+	    
+	    $("#sel_seat_cnt").text(sel_seat_cnt); 
+	    
+	    
+	    // 좌석 선택 다시하기 버튼 활성/비활성
+	    if(parseInt(sel_seat_cnt) > 0 ){
+	        $("#btnReSelect").html("<a href=\"javascript:resetSelSeat();\" onclick=\"nclk(this, 'sea.again', '', '')\" class=\"bt\"><span class=\"rf\">좌석 다시선택</span></a>");
+	    }else{
+	        $("#btnReSelect").html("<span class=\"bt dim\"><span class=\"rf\">좌석 다시선택</span></span>");
+	    }   
+
+	    // 다음단계 버튼 활성/비활성
+	    if(parseInt(sel_seat_cnt) == tot_cnt){
+	        $("#btnNext").attr("class" , "bt on");
+	    }else{
+	        $("#btnNext").attr("class" , "bt dim");
+	    }    
+	}
+
+	// 좌석 선택 다시하기
+	function resetSelSeat()
+	{
+	    if($("#NT_ID").val() == "PRIMUS"){
+	        if(sel_seat_info.indexOf(",") != -1) {
+	            var tmp_array1 = sel_seat_info.split(",");
+	            
+	            for(var j=0; j < tmp_array1.length; j++)
+	            {
+	                $("#" + tmp_array1[j]).attr("class", "on");  
+	            }
+	        }else{
+	            $("#" + sel_seat_info).attr("class", "on");
+	        }
+	    }else if($("#NT_ID").val() == "LOTTEC"){
+	        if(sel_seat_info.indexOf(",") != -1) {
+	           // var tmp_array3 = sel_seat_info.split("^");
+	            var tmp_array3 = sel_seat_info.split(",");
+
+	            for (var kk = 0; kk < tmp_array3.length; kk++)
+	            {
+	                $("#" + tmp_array3[kk]).attr("class", "on");  
+	            }
+	        }else{
+	            $("#" + sel_seat_info).attr("class", "on");     
+	        }
+	    }else{
+	        if(sel_seat_info.indexOf("|") != -1) {
+	            var tmp_array2 = sel_seat_info.split("|");
+	            
+	            for(var k=0; k < tmp_array2.length; k++)
+	            {
+	                $("#" + tmp_array2[k]).attr("class", "on");  
+	            }
+	        }else{
+	            $("#" + sel_seat_info).attr("class", "on");     
+	        }
+	    }
+
+	    // 좌석 선택 변수값 초기화
+	    sel_seat_cnt = 0;
+	    sel_seat_info = "";
+	    sel_seat_info_txt = "";
+	    sel_seat_txt = "";
+	    
+	    $("#SEAT_LOCK_INFO").val("");
+	    $("#REAL_SEAT_INFO").val("");
+	    $("#sel_seat_cnt").text("0");
+	    $("#sel_seat_txt").html("<p>화면을 확대하면 쉽게 선택/취소 할 수 있습니다.</p>");
+	    $("#btnReSelect").html("<span class=\"bt dim\"><span class=\"rf\">좌석 다시선택</span></span>");
+	    $("#btnNext").attr("class" , "bt dim");
+	}
+
+	// 다음 단계 버튼
+	function goNext()
+	{
+	    if($("#btnNext").attr("class").indexOf("on") != -1 ){
+	        // 좌석선점 함수 호출
+	        setSeatCompleted();
+	    }
+	}
+
+	// 이전 단계 버튼 클릭
+	function goPrev()
+	{
+	    //window.history.go(-1);
+	    var rtnURL = $("#rtnURL").val();
+	    if(rtnURL != ""){
+	        location.href = rtnURL;
+	    } else {
+	        window.history.go(-1);
+	    }
+	}
+
+	// 좌석 선점
+	function setSeatCompleted() {
+
+	    var param = "";
+	    var seatPT_ID = $("#PT_ID").val();
+		var seatNT_ID = $("#NT_ID").val();
+		var sessionKey = $("#SEATSESSIONKEY").val();
+	    var seatCnt = sel_seat_cnt;
+	    var seatInfo = sel_seat_info;
+	    var selSeat = sel_seat_txt;
+
+	    if (seatNT_ID == "MEGABOX") {           
+	        if(sel_seat_info.indexOf("|") != -1) {
+	            seatInfo = "";
+	            var tmpSeatInfo = sel_seat_info.split("|");
+	            
+	            for(var i=0; i < tmpSeatInfo.length; i++)
+	            {
+	                if(tmpSeatInfo[i].indexOf("_") != -1){
+	                    seatInfo += "{" +tmpSeatInfo[i] + "}";
+	                }
+	            }
+	        }else{
+	            seatInfo = "{" + seatInfo + "}";
+	        }
+	        
+	        for(var j=0; j < seatInfo.length; j++)
+	        {
+	            if(seatInfo.indexOf("_") != -1){
+	                seatInfo = seatInfo.replace("_", "/");
+	            }
+	        }
+	    }else{
+	        for (var k = 0; k < seatInfo.length; k++) {
+	            if (seatNT_ID == "LOTTEC") {
+	                if (seatInfo.indexOf("_") != -1) {
+	                    seatInfo = seatInfo.replace("_", ";");
+	                }
+	            } else {
+	                if (seatInfo.indexOf("_") != -1) {
+	                    seatInfo = seatInfo.replace("_", ":");
+
+	                    if (seatNT_ID == "PRIMUS") {
+	                        seatInfo = seatInfo.replace("CP", " ");
+	                    }
+	                }
+	            }
+	        }
+	    }
+
+	    $("#SEAT_LOCK_INFO").val(seatInfo);
+	    $("#REAL_SEAT_INFO").val(sel_seat_txt);
+	    
+	    /*
+	    if (seatNT_ID == "MEGABOX") {
+	        param = "PT_ID=" + $("#PT_ID").val() + "&NT_ID=" + seatNT_ID + "&Type=MSETSEAT&Sessionkey="+sessionKey+"&SeatInfo=" + seatInfo;
+	    } else 
+		*/
+	    if (seatNT_ID == "MEGABOX") {
+			param = "Flag=W460" + "&PT_ID=" + $("#PT_ID").val() + "&NT_ID=" + seatNT_ID + "&SESSIONKEY=" + "&Type=MSETSEAT" + "&SeatInfo=" + seatInfo + "&Cnt=" + sel_seat_cnt;
+		} else if (seatNT_ID == "PRIMUS") {
+			param = "Flag=ReserveSeats" + "&PT_ID=" + $("#PT_ID").val() + "&NT_ID=" + seatNT_ID + "&SESSIONKEY=" + "&SeatInfo=" + seatInfo + "&Cnt=" + sel_seat_cnt;
+	    } else if (seatNT_ID == "LOTTEC") {
+	        param = "Flag=ReserveSeats" + "&PT_ID=" + $("#PT_ID").val() + "&NT_ID=" + seatNT_ID + "&SESSIONKEY=" + "&SeatInfo=" + seatInfo + "&Cnt=" + sel_seat_cnt;
+	    } else if (seatNT_ID == "MOVIEOK") {
+			param = "Flag=ReserveSeats" + "&PT_ID=" + $("#PT_ID").val() + "&NT_ID=" + seatNT_ID + "&SESSIONKEY=" + "&SeatInfo=" + seatInfo + "&Cnt=" + sel_seat_cnt;
+		}
+		
+		$.ajax({
+			type: "POST",
+			url: "/AsyncRequest/SetTheaterSeatCheck.aspx",
+			data: param,
+			cache: false,
+			success: setSeatCompletedCallback,
+			dataType: "text"
+		});
+	}
+
+	// 좌석 선점 완료
+	function setSeatCompletedCallback(res) {
+
+	    if(res != ""){
+	        var arrRes = res.split("|");
+	        var str_selSeat = "";
+	        // 0:메가박스, 000 : 씨너스, 00 : 롯데시네마
+	        if (arrRes[0] == "0" || arrRes[0] == "000" || arrRes[0] == "00") {
+		        $("#SEATSESSIONKEY").val(arrRes[1]);
+		        $("#BOOK_NO").val(arrRes[2]);
+	            // 결제 단계로 이동
+	            var param = formData2QueryString($("#frmParam")[0]);
+	            location.href = "/Ticket/getPay.aspx?" + encodeURI(param);
+		    }else{   
+	            if (bType == "BROWSER_TYPE_ANDROID_WEBKIT")  {
+	                alert("좌석 선점을 실패하였습니다.\n다른 좌석을 선택해주세요.");
+	            }else{
+	                alert("좌석 선점을 실패하였습니다.\r\n다른 좌석을 선택해주세요.");
+	            }
+		    }
+	    } else { 
+	        if (bType == "BROWSER_TYPE_ANDROID_WEBKIT") {
+	            alert("좌석 선점을 실패하였습니다.\n다른 좌석을 선택해주세요.");
+	        } else{
+	            alert("좌석 선점을 실패하였습니다.\r\n다른 좌석을 선택해주세요.");
+	        }
+	    }
+	}
+	</script>
+</head>
+<body>
+<dl class="selsit">
+	<dt><strong class="sel"><span id="sel_seat_cnt">0</span></strong>/<strong><span id="tot_seat_cnt">2</span></strong></dt>
+	<dd><span id="sel_seat_txt"><p>화면을 확대하면 쉽게 선택/취소 할 수 있습니다.</p></span></dd>
+</dl>
+
+<div class="seat">
+	<table border="1" cellspacing="1" summary="좌석배치도">
+		<caption>SCREEN</caption>
+	    <tbody>
+			<tr>
+			<td></td>
+			<td id="00_A_2" title="A2" class="on"><a href="javascript:selectSeatClick('00_A_2');" title="A2"><span class="nc">A2</span></a></td>
+			<td id="00_A_3" title="A3" class="on"><a href="javascript:selectSeatClick('00_A_3');" title="A3"><span class="nc">A3</span></a></td>
+			<td id="00_A_4" title="A4" class="on"><a href="javascript:selectSeatClick('00_A_4');" title="A4"><span class="nc">A4</span></a></td>
+			<td></td>
+			<td id="00_A_5" title="A5" class="on"><a href="javascript:selectSeatClick('00_A_5');" title="A5"><span class="nc">A5</span></a></td>
+			<td id="00_A_6" title="A6" class="on"><a href="javascript:selectSeatClick('00_A_6');" title="A6"><span class="nc">A6</span></a></td>
+			<td id="00_A_7" title="A7" class="on"><a href="javascript:selectSeatClick('00_A_7');" title="A7"><span class="nc">A7</span></a></td>
+			<td id="00_A_8" title="A8" class="on"><a href="javascript:selectSeatClick('00_A_8');" title="A8"><span class="nc">A8</span></a></td>
+			<td id="00_A_9" title="A9" class="on"><a href="javascript:selectSeatClick('00_A_9');" title="A9"><span class="nc">A9</span></a></td>
+			<td></td>
+			<td id="00_A_10" title="A10" class="on"><a href="javascript:selectSeatClick('00_A_10');" title="A10"><span class="nc">A10</span></a></td>
+			<td id="00_A_11" title="A11" class="on"><a href="javascript:selectSeatClick('00_A_11');" title="A11"><span class="nc">A11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_B_2" title="B2" class="on"><a href="javascript:selectSeatClick('00_B_2');" title="B2"><span class="nc">B2</span></a></td>
+			<td id="00_B_3" title="B3" class="on"><a href="javascript:selectSeatClick('00_B_3');" title="B3"><span class="nc">B3</span></a></td>
+			<td id="00_B_4" title="B4" class="on"><a href="javascript:selectSeatClick('00_B_4');" title="B4"><span class="nc">B4</span></a></td>
+			<td></td>
+			<td id="00_B_5" title="B5" class="on"><a href="javascript:selectSeatClick('00_B_5');" title="B5"><span class="nc">B5</span></a></td>
+			<td id="00_B_6" title="B6" class="on"><a href="javascript:selectSeatClick('00_B_6');" title="B6"><span class="nc">B6</span></a></td>
+			<td id="00_B_7" title="B7" class="on"><a href="javascript:selectSeatClick('00_B_7');" title="B7"><span class="nc">B7</span></a></td>
+			<td id="00_B_8" title="B8" class="on"><a href="javascript:selectSeatClick('00_B_8');" title="B8"><span class="nc">B8</span></a></td>
+			<td id="00_B_9" title="B9" class="on"><a href="javascript:selectSeatClick('00_B_9');" title="B9"><span class="nc">B9</span></a></td>
+			<td></td>
+			<td id="00_B_10" title="B10" class="on"><a href="javascript:selectSeatClick('00_B_10');" title="B10"><span class="nc">B10</span></a></td>
+			<td id="00_B_11" title="B11" class="on"><a href="javascript:selectSeatClick('00_B_11');" title="B11"><span class="nc">B11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_C_2" title="C2" class="on"><a href="javascript:selectSeatClick('00_C_2');" title="C2"><span class="nc">C2</span></a></td>
+			<td id="00_C_3" title="C3" class="on"><a href="javascript:selectSeatClick('00_C_3');" title="C3"><span class="nc">C3</span></a></td>
+			<td id="00_C_4" title="C4" class="on"><a href="javascript:selectSeatClick('00_C_4');" title="C4"><span class="nc">C4</span></a></td>
+			<td></td>
+			<td id="00_C_5" title="C5" class="on"><a href="javascript:selectSeatClick('00_C_5');" title="C5"><span class="nc">C5</span></a></td>
+			<td id="00_C_6" title="C6" class="on"><a href="javascript:selectSeatClick('00_C_6');" title="C6"><span class="nc">C6</span></a></td>
+			<td id="00_C_7" title="C7" class="on"><a href="javascript:selectSeatClick('00_C_7');" title="C7"><span class="nc">C7</span></a></td>
+			<td id="00_C_8" title="C8" class="on"><a href="javascript:selectSeatClick('00_C_8');" title="C8"><span class="nc">C8</span></a></td>
+			<td id="00_C_9" title="C9" class="on"><a href="javascript:selectSeatClick('00_C_9');" title="C9"><span class="nc">C9</span></a></td>
+			<td></td>
+			<td id="00_C_10" title="C10" class="on"><a href="javascript:selectSeatClick('00_C_10');" title="C10"><span class="nc">C10</span></a></td>
+			<td id="00_C_11" title="C11" class="on"><a href="javascript:selectSeatClick('00_C_11');" title="C11"><span class="nc">C11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_D_2" title="D2" class="on"><a href="javascript:selectSeatClick('00_D_2');" title="D2"><span class="nc">D2</span></a></td>
+			<td id="00_D_3" title="D3" class="on"><a href="javascript:selectSeatClick('00_D_3');" title="D3"><span class="nc">D3</span></a></td>
+			<td id="00_D_4" title="D4" class="on"><a href="javascript:selectSeatClick('00_D_4');" title="D4"><span class="nc">D4</span></a></td>
+			<td></td>
+			<td id="00_D_5" title="D5" class="on"><a href="javascript:selectSeatClick('00_D_5');" title="D5"><span class="nc">D5</span></a></td>
+			<td id="00_D_6" title="D6" class="on"><a href="javascript:selectSeatClick('00_D_6');" title="D6"><span class="nc">D6</span></a></td>
+			<td id="00_D_7" title="D7" class="on"><a href="javascript:selectSeatClick('00_D_7');" title="D7"><span class="nc">D7</span></a></td>
+			<td id="00_D_8" title="D8" class="on"><a href="javascript:selectSeatClick('00_D_8');" title="D8"><span class="nc">D8</span></a></td>
+			<td id="00_D_9" title="D9" class="on"><a href="javascript:selectSeatClick('00_D_9');" title="D9"><span class="nc">D9</span></a></td>
+			<td></td>
+			<td id="00_D_10" title="D10" class="on"><a href="javascript:selectSeatClick('00_D_10');" title="D10"><span class="nc">D10</span></a></td>
+			<td id="00_D_11" title="D11" class="on"><a href="javascript:selectSeatClick('00_D_11');" title="D11"><span class="nc">D11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_E_2" title="E2" class="on"><a href="javascript:selectSeatClick('00_E_2');" title="E2"><span class="nc">E2</span></a></td>
+			<td id="00_E_3" title="E3" class="on"><a href="javascript:selectSeatClick('00_E_3');" title="E3"><span class="nc">E3</span></a></td>
+			<td id="00_E_4" title="E4" class="on"><a href="javascript:selectSeatClick('00_E_4');" title="E4"><span class="nc">E4</span></a></td>
+			<td></td>
+			<td id="00_E_5" title="E5" class="on"><a href="javascript:selectSeatClick('00_E_5');" title="E5"><span class="nc">E5</span></a></td>
+			<td id="00_E_6" title="E6" class="on"><a href="javascript:selectSeatClick('00_E_6');" title="E6"><span class="nc">E6</span></a></td>
+			<td id="00_E_7" title="E7" class="on"><a href="javascript:selectSeatClick('00_E_7');" title="E7"><span class="nc">E7</span></a></td>
+			<td id="00_E_8" title="E8" class="on"><a href="javascript:selectSeatClick('00_E_8');" title="E8"><span class="nc">E8</span></a></td>
+			<td id="00_E_9" title="E9" class="on"><a href="javascript:selectSeatClick('00_E_9');" title="E9"><span class="nc">E9</span></a></td>
+			<td></td>
+			<td id="00_E_10" title="E10" class="on"><a href="javascript:selectSeatClick('00_E_10');" title="E10"><span class="nc">E10</span></a></td>
+			<td id="00_E_11" title="E11" class="on"><a href="javascript:selectSeatClick('00_E_11');" title="E11"><span class="nc">E11</span></a></td>
+			<td id="00_E_12" title="E12" class="on"><a href="javascript:selectSeatClick('00_E_12');" title="E12"><span class="nc">E12</span></a></td>
+			</tr>
+
+			<tr>
+			<td id="00_F_1" title="F1" class="on"><a href="javascript:selectSeatClick('00_F_1');" title="F1"><span class="nc">F1</span></a></td>
+			<td id="00_F_2" title="F2" class="on"><a href="javascript:selectSeatClick('00_F_2');" title="F2"><span class="nc">F2</span></a></td>
+			<td id="00_F_3" title="F3" class="on"><a href="javascript:selectSeatClick('00_F_3');" title="F3"><span class="nc">F3</span></a></td>
+			<td id="00_F_4" title="F4" class="on"><a href="javascript:selectSeatClick('00_F_4');" title="F4"><span class="nc">F4</span></a></td>
+			<td></td>
+			<td id="00_F_5" title="F5" class="on"><a href="javascript:selectSeatClick('00_F_5');" title="F5"><span class="nc">F5</span></a></td>
+			<td id="00_F_6" title="F6" class="on"><a href="javascript:selectSeatClick('00_F_6');" title="F6"><span class="nc">F6</span></a></td>
+			<td class="dim"><span class="nc">F7</span></td><td class="dim"><span class="nc">F8</span></td>
+			<td id="00_F_9" title="F9" class="on"><a href="javascript:selectSeatClick('00_F_9');" title="F9"><span class="nc">F9</span></a></td>
+			<td></td>
+			<td id="00_F_10" title="F10" class="on"><a href="javascript:selectSeatClick('00_F_10');" title="F10"><span class="nc">F10</span></a></td>
+			<td id="00_F_11" title="F11" class="on"><a href="javascript:selectSeatClick('00_F_11');" title="F11"><span class="nc">F11</span></a></td>
+			<td id="00_F_12" title="F12" class="on"><a href="javascript:selectSeatClick('00_F_12');" title="F12"><span class="nc">F12</span></a></td>
+			</tr>
+
+			<tr>
+			<td id="00_G_1" title="G1" class="on"><a href="javascript:selectSeatClick('00_G_1');" title="G1"><span class="nc">G1</span></a></td>
+			<td id="00_G_2" title="G2" class="on"><a href="javascript:selectSeatClick('00_G_2');" title="G2"><span class="nc">G2</span></a></td>
+			<td id="00_G_3" title="G3" class="on"><a href="javascript:selectSeatClick('00_G_3');" title="G3"><span class="nc">G3</span></a></td>
+			<td id="00_G_4" title="G4" class="on"><a href="javascript:selectSeatClick('00_G_4');" title="G4"><span class="nc">G4</span></a></td>
+			<td></td>
+			<td class="dim"><span class="nc">G5</span></td>
+			<td class="dim"><span class="nc">G6</span></td>
+			<td class="dim"><span class="nc">G7</span></td>
+			<td id="00_G_8" title="G8" class="on"><a href="javascript:selectSeatClick('00_G_8');" title="G8"><span class="nc">G8</span></a></td>
+			<td id="00_G_9" title="G9" class="on"><a href="javascript:selectSeatClick('00_G_9');" title="G9"><span class="nc">G9</span></a></td>
+			<td></td>
+			<td id="00_G_10" title="G10" class="on"><a href="javascript:selectSeatClick('00_G_10');" title="G10"><span class="nc">G10</span></a></td>
+			<td id="00_G_11" title="G11" class="on"><a href="javascript:selectSeatClick('00_G_11');" title="G11"><span class="nc">G11</span></a></td>
+			<td id="00_G_12" title="G12" class="on"><a href="javascript:selectSeatClick('00_G_12');" title="G12"><span class="nc">G12</span></a></td>
+			</tr>
+
+			<tr>
+			<td id="00_H_1" title="H1" class="on"><a href="javascript:selectSeatClick('00_H_1');" title="H1"><span class="nc">H1</span></a></td>
+			<td id="00_H_2" title="H2" class="on"><a href="javascript:selectSeatClick('00_H_2');" title="H2"><span class="nc">H2</span></a></td>
+			<td id="00_H_3" title="H3" class="on"><a href="javascript:selectSeatClick('00_H_3');" title="H3"><span class="nc">H3</span></a></td>
+			<td id="00_H_4" title="H4" class="on"><a href="javascript:selectSeatClick('00_H_4');" title="H4"><span class="nc">H4</span></a></td>
+			<td></td>
+			<td class="dim"><span class="nc">H5</span></td>
+			<td class="dim"><span class="nc">H6</span></td>
+			<td class="dim"><span class="nc">H7</span></td>
+			<td class="dim"><span class="nc">H8</span></td>
+			<td class="dim"><span class="nc">H9</span></td>
+			<td></td>
+			<td id="00_H_10" title="H10" class="on"><a href="javascript:selectSeatClick('00_H_10');" title="H10"><span class="nc">H10</span></a></td>
+			<td id="00_H_11" title="H11" class="on"><a href="javascript:selectSeatClick('00_H_11');" title="H11"><span class="nc">H11</span></a></td>
+			<td id="00_H_12" title="H12" class="on"><a href="javascript:selectSeatClick('00_H_12');" title="H12"><span class="nc">H12</span></a></td>
+			</tr>
+
+			<tr>
+			<td id="00_I_1" title="I1" class="on"><a href="javascript:selectSeatClick('00_I_1');" title="I1"><span class="nc">I1</span></a></td>
+			<td id="00_I_2" title="I2" class="on"><a href="javascript:selectSeatClick('00_I_2');" title="I2"><span class="nc">I2</span></a></td>
+			<td id="00_I_3" title="I3" class="on"><a href="javascript:selectSeatClick('00_I_3');" title="I3"><span class="nc">I3</span></a></td>
+			<td id="00_I_4" title="I4" class="on"><a href="javascript:selectSeatClick('00_I_4');" title="I4"><span class="nc">I4</span></a></td>
+			<td></td>
+			<td id="00_I_5" title="I5" class="on"><a href="javascript:selectSeatClick('00_I_5');" title="I5"><span class="nc">I5</span></a></td>
+			<td id="00_I_6" title="I6" class="on"><a href="javascript:selectSeatClick('00_I_6');" title="I6"><span class="nc">I6</span></a></td>
+			<td class="dim"><span class="nc">I7</span></td>
+			<td class="dim"><span class="nc">I8</span></td>
+			<td id="00_I_9" title="I9" class="on"><a href="javascript:selectSeatClick('00_I_9');" title="I9"><span class="nc">I9</span></a></td>
+			<td></td>
+			<td id="00_I_10" title="I10" class="on"><a href="javascript:selectSeatClick('00_I_10');" title="I10"><span class="nc">I10</span></a></td>
+			<td id="00_I_11" title="I11" class="on"><a href="javascript:selectSeatClick('00_I_11');" title="I11"><span class="nc">I11</span></a></td>
+			<td id="00_I_12" title="I12" class="on"><a href="javascript:selectSeatClick('00_I_12');" title="I12"><span class="nc">I12</span></a></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_J_2" title="J2" class="on"><a href="javascript:selectSeatClick('00_J_2');" title="J2"><span class="nc">J2</span></a></td>
+			<td id="00_J_3" title="J3" class="on"><a href="javascript:selectSeatClick('00_J_3');" title="J3"><span class="nc">J3</span></a></td>
+			<td id="00_J_4" title="J4" class="on"><a href="javascript:selectSeatClick('00_J_4');" title="J4"><span class="nc">J4</span></a></td>
+			<td></td>
+			<td id="00_J_5" title="J5" class="on"><a href="javascript:selectSeatClick('00_J_5');" title="J5"><span class="nc">J5</span></a></td>
+			<td id="00_J_6" title="J6" class="on"><a href="javascript:selectSeatClick('00_J_6');" title="J6"><span class="nc">J6</span></a></td>
+			<td id="00_J_7" title="J7" class="on"><a href="javascript:selectSeatClick('00_J_7');" title="J7"><span class="nc">J7</span></a></td>
+			<td id="00_J_8" title="J8" class="on"><a href="javascript:selectSeatClick('00_J_8');" title="J8"><span class="nc">J8</span></a></td>
+			<td id="00_J_9" title="J9" class="on"><a href="javascript:selectSeatClick('00_J_9');" title="J9"><span class="nc">J9</span></a></td>
+			<td></td>
+			<td id="00_J_10" title="J10" class="on"><a href="javascript:selectSeatClick('00_J_10');" title="J10"><span class="nc">J10</span></a></td>
+			<td id="00_J_11" title="J11" class="on"><a href="javascript:selectSeatClick('00_J_11');" title="J11"><span class="nc">J11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_K_2" title="K2" class="on"><a href="javascript:selectSeatClick('00_K_2');" title="K2"><span class="nc">K2</span></a></td><td id="00_K_3" title="K3" class="on"><a href="javascript:selectSeatClick('00_K_3');" title="K3"><span class="nc">K3</span></a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td id="00_K_6" title="K6" class="on"><a href="javascript:selectSeatClick('00_K_6');" title="K6"><span class="nc">K6</span></a></td>
+			<td id="00_K_7" title="K7" class="on"><a href="javascript:selectSeatClick('00_K_7');" title="K7"><span class="nc">K7</span></a></td>
+			<td id="00_K_8" title="K8" class="on"><a href="javascript:selectSeatClick('00_K_8');" title="K8"><span class="nc">K8</span></a></td>
+			<td></td>
+			<td></td>
+			<td id="00_K_10" title="K10" class="on"><a href="javascript:selectSeatClick('00_K_10');" title="K10"><span class="nc">K10</span></a></td>
+			<td id="00_K_11" title="K11" class="on"><a href="javascript:selectSeatClick('00_K_11');" title="K11"><span class="nc">K11</span></a></td>
+			<td></td>
+			</tr>
+			<tr>
+
+			<td></td>
+			<td id="00_L_2" title="L2" class="on"><a href="javascript:selectSeatClick('00_L_2');" title="L2"><span class="nc">L2</span></a></td>
+			<td id="00_L_3" title="L3" class="on"><a href="javascript:selectSeatClick('00_L_3');" title="L3"><span class="nc">L3</span></a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td id="00_L_6" title="L6" class="on"><a href="javascript:selectSeatClick('00_L_6');" title="L6"><span class="nc">L6</span></a></td>
+			<td id="00_L_7" title="L7" class="on"><a href="javascript:selectSeatClick('00_L_7');" title="L7"><span class="nc">L7</span></a></td>
+			<td id="00_L_8" title="L8" class="on"><a href="javascript:selectSeatClick('00_L_8');" title="L8"><span class="nc">L8</span></a></td>
+			<td></td>
+			<td></td>
+			<td id="00_L_10" title="L10" class="on"><a href="javascript:selectSeatClick('00_L_10');" title="L10"><span class="nc">L10</span></a></td>
+			<td id="00_L_11" title="L11" class="on"><a href="javascript:selectSeatClick('00_L_11');" title="L11"><span class="nc">L11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td></td>
+			<td id="00_M_2" title="M2" class="on"><a href="javascript:selectSeatClick('00_M_2');" title="M2"><span class="nc">M2</span></a></td>
+			<td id="00_M_3" title="M3" class="on"><a href="javascript:selectSeatClick('00_M_3');" title="M3"><span class="nc">M3</span></a></td>
+			<td></td>
+			<td></td>
+			<td id="00_M_5" title="M5" class="on"><a href="javascript:selectSeatClick('00_M_5');" title="M5"><span class="nc">M5</span></a></td>
+			<td id="00_M_6" title="M6" class="on"><a href="javascript:selectSeatClick('00_M_6');" title="M6"><span class="nc">M6</span></a></td>
+			<td id="00_M_7" title="M7" class="on"><a href="javascript:selectSeatClick('00_M_7');" title="M7"><span class="nc">M7</span></a></td>
+			<td id="00_M_8" title="M8" class="on"><a href="javascript:selectSeatClick('00_M_8');" title="M8"><span class="nc">M8</span></a></td>
+			<td></td>
+			<td></td>
+			<td id="00_M_10" title="M10" class="on"><a href="javascript:selectSeatClick('00_M_10');" title="M10"><span class="nc">M10</span></a></td>
+			<td id="00_M_11" title="M11" class="on"><a href="javascript:selectSeatClick('00_M_11');" title="M11"><span class="nc">M11</span></a></td>
+			<td></td>
+			</tr>
+
+			<tr>
+			<td id="00_N_1" title="N1" class="on"><a href="javascript:selectSeatClick('00_N_1');" title="N1"><span class="nc">N1</span></a></td>
+			<td id="00_N_2" title="N2" class="on"><a href="javascript:selectSeatClick('00_N_2');" title="N2"><span class="nc">N2</span></a></td>
+			<td id="00_N_3" title="N3" class="on"><a href="javascript:selectSeatClick('00_N_3');" title="N3"><span class="nc">N3</span></a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td id="00_N_10" title="N10" class="on"><a href="javascript:selectSeatClick('00_N_10');" title="N10"><span class="nc">N10</span></a></td>
+			<td id="00_N_11" title="N11" class="on"><a href="javascript:selectSeatClick('00_N_11');" title="N11"><span class="nc">N11</span></a></td>
+			<td></td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+
+<div class="revbt">
+	<div class="pv"><a href="javascript:goPrev();" onclick="nclk(this, 'sea.prev', '', '')" class="bt">이전단계</a></div>
+	<div class="nx"><a id="btnNext" href="javascript:goNext();" onclick="nclk(this, 'sea.next', '', '')" class="bt dim">다음단계</a></div><!-- [D]버튼 상태에 따라 class 추가 - 비활성:dim, 활성:on --> 
+</div>
+</body>
+</html>

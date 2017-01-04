@@ -1,0 +1,539 @@
+@charset "UTF-8";
+
+/* _cineplex_common.scss */
+
+/* layout */
+body {
+	height: 100%;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+/* lnb */
+.lnb {
+	border-bottom: 1px solid #e1e1e1;
+	background-color: #fafafa;
+
+	.lnb_list {
+		@extend %clearfix;
+
+		margin-bottom: -1px;
+	}
+	.item {
+		float: left;
+		width: 50%;
+
+		.link {
+			display: block;
+			position: relative;
+			text-align: center;
+		}
+		.link_menu {
+			display: inline-block;
+			padding: 0 5px;
+			font-size: 16px;
+			height: 42px;
+			line-height: 42px;				
+			white-space: nowrap;
+		}
+	}
+	.item + .item {
+
+		.link:before {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 1px;
+			height: 18px;
+			margin: auto;
+			background-color: rgba(0,0,0,0.1);
+			content: '';
+		}
+	}
+	.item.on {
+
+		.link_menu {
+			margin: 9px 0;
+			background-color: #00c73c;
+			font-weight: bold;
+			color: #fff;
+			height: 24px;
+			line-height: 24px;			
+		}
+	}
+}
+
+/* header */
+
+header {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 41px;
+	background-color: #fff;
+	border-bottom: 1px solid #e5e5e5;
+	text-align: center;
+	color: #000;
+
+	/* item */
+	.prev_wrap {
+		top: 5px;
+		left: 0;
+		position: absolute;
+		white-space: nowrap;
+
+		.link {
+			@extend %sp_movie_gnb;
+			
+			border: none;
+			display: inline-block;
+			vertical-align: middle;
+			overflow: hidden;
+			margin-left: 5px;
+			background-position: -145px -115px;
+			width: 31px;
+			height: 31px;
+			background-color: transparent;
+		}
+	}
+
+	.title_wrap {
+		overflow: hidden;
+		margin: 0 36px;
+		font-size: 17px;
+		font-weight: normal;
+		line-height: 41px;
+		text-align: center;
+
+		.link {
+			display: block;
+			overflow: hidden;
+			font-size: 17px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	}
+
+}
+
+
+/* 영화 정렬 */
+.sort {
+	.sort_list {
+		overflow: hidden;
+		border-bottom: 1px solid #d6d6d6;
+
+		.item {
+			float: left;
+			color: #666;
+			font-size: 14px;
+		}
+		.link {
+			display: block;
+			padding: 11px 0 8px 11px;
+		}
+
+		.link:before {
+			@extend %sp_movie_gnb;
+
+			display: inline-block;
+			width: 13px;
+			height: 14px;
+			background-position: -75px -122px;
+			margin: 3px 4px 0 0;
+			vertical-align: top;
+			content: '';
+		}
+		.item.on .link {
+			color: #00c73c;
+		}
+		.item.on .link:before {
+			background-position: -185px -120px;
+		}
+	}
+}
+
+/* 영화 인기 검색 */
+.pop_search_wrap {
+	margin-top: 30px;
+	border-top: 1px solid #494949;
+	background-color: #fff;
+
+	.tab {
+		@extend %clearfix;
+
+		.item:first-child {
+			border-left: none;
+			margin-right: -1px;
+		}
+		.item {
+			display: block;
+			float: left;
+			width: 50%;
+			height: 34px;
+			border-top: 1px solid #fafafa;
+			border-left: 1px solid #aeaeae;
+		}
+		.item .link {
+			display: block;
+			height: 25px;
+			text-align: center;
+			padding-top: 7px;
+			color: #000;
+		}
+		.on {
+			border-top: none;
+			border-bottom: 1px solid #aeaeae;
+		}
+		.on .link {
+			border: 1px solid #e1e1e1;
+			background-color: #f3f3f3;
+			color: #777;
+		}
+
+	}
+}
+
+/* 영화 인기 검색 순위 */
+.pop_search {
+
+	.item {
+		position: relative;
+		border-bottom: 1px solid #ededed;
+	}
+	.link {
+		display: block;
+		position:relative;
+	}
+	.rank {
+
+		&_txt { 
+			max-width: 80%;
+			height: 23px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding: 8px 0 2px 10px;
+			white-space: nowrap;
+			word-wrap: normal;
+		}
+		&_num {
+			@extend %sp_rank;			
+
+			display: inline-block;
+			float: left;
+			width: 14px;
+			height: 13px;
+			margin-right: 7px;
+			margin-top: 3px;			
+			background-position: 0 0;
+			color: #fff;
+			font-family: Tahoma, Helvetica;
+			font-size: 9px;
+			line-height: 13px;
+			text-align: center;
+			font-weight: bold;
+		}
+
+	}
+	.link {
+
+		p {
+			display: inline-block;
+			position:absolute;
+			right: 10px;
+			top: 9px;
+			width: 31px;
+			height: 30px;
+		}
+		em {
+			@extend %sp_rank;
+
+			display: inline-block;
+			position: absolute;
+			right: 0;
+			color: #999;
+			font-size: 11px;
+			font-family: Helvetica;
+		}
+		.default {
+			left: 0px;
+			top: 7px;
+			width: 7px;
+			height: 2px;
+			background-position: -15px 0;
+		}
+		.up {
+			left: 0px;
+			top: 4px;
+			width: 8px;
+			height: 9px;
+			background-position: 0 -15px;
+		}
+		.down {
+			left: 0px;
+			top: 4px;
+			width: 8px;
+			height: 9px;
+			background-position: -10px -15px;
+		}	
+		.num {
+			background:none;
+		}		
+
+	}
+	.item:last-child {
+		height: 36px;
+		border-bottom: 1px solid #c9c9c9;
+	}
+	.default_date {
+		padding-top: 2px;
+		padding-right: 10px;
+		text-align: right;
+		font-family: Helvetica;
+		color: #999;
+		font-size: 11px;
+	}
+}
+
+/* footer */
+footer {
+	position: relative;
+	padding-top: 13px;
+	background-color: #fff;
+
+	.unified_search {
+		padding: 0 0 2px;
+	}
+	//통합검색
+	.search_wrap {
+		padding-right: 111px;
+		background-color: #fff;
+		overflow: hidden;
+		position: relative;
+		padding: 4px 111px 8px 10px;
+
+		&_inner {
+			position: relative;
+			height: 24px;
+			padding: 7px 39px 0 9px;
+			border: 1px solid #cecece;
+			background-color: #fff;
+		}
+		.ipt_search {
+			font-size: 14px;
+			color: #1a1a1a;
+			width: 100%;
+			border: 0;
+		}
+		.btn_remove {
+			@extend %sp_movie_gnb;
+
+			background-position: -171px -81px;
+			background-color: transparent;		
+			top: 2px;
+			overflow: hidden;
+			position: absolute;
+			right: 5px;
+			z-index: 10;
+			width: 27px;
+			height: 27px;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			text-indent: 40px;
+			white-space: nowrap;
+			cursor: pointer;
+		}
+		.submit {
+			@extend %sp_movie_gnb;	
+
+			position: absolute;
+			top: 4px;
+			font-size: 13px;
+			height: 33px;
+			line-height: 29px;
+			background-color: #fff;
+			color: #555;
+			border: 0;
+		}
+		.submit_search_btn {
+			background-position: -1px -114px;
+			right: 79px;
+			width: 32px;
+			background-color: #f9f9f9;
+			border: 1px solid #cecece;
+			border-left: 0;
+		}
+		.submit_unified_btn {
+			width: 65px;
+			line-height: 28px;
+			border: 1px solid #cecece;
+			right: 10px;
+			white-space: nowrap;
+		}
+
+	}
+
+	//맨 위로
+	.top_move_wrap {
+		overflow: hidden;
+		clear: both;
+		width: 100%;
+		padding: 0 0 10px;
+		font-size: 13px;
+		white-space: nowrap;
+
+		.link {
+			display: block;
+			height: 31px;
+			margin: 0 10px;
+			border: 1px solid #e4e4e4;
+			color: #444;
+			line-height: 31px;
+			text-align: center;
+		}
+		.link:after {
+			@extend %sp_movie_gnb;
+
+			display: inline-block;
+			width: 7px;
+			height: 4px;
+			margin: 13px 0 0 3px;
+			background-position: -45px -122px;
+			vertical-align: top;
+			content: '';
+		}
+
+	}
+
+	//하단 링크 영역
+	.footer_link_wrap {
+		border-top: 1px solid #dfe1e3;
+		background-color: #f2f3f4;
+		text-align: center;
+
+		.link {
+			display: inline-block;
+			margin-top: 16px;
+			padding: 0 9px 0 10px;
+			border: 1px solid #d7d7d8;
+			background-color: #fcfcfc;
+			color: #555;
+			font-size: 12px;
+			line-height: 25px;
+		}
+
+	}
+
+	//하단 정보 영역
+	.footer_info_wrap {
+		background-color: #f2f3f4;
+		font-size: 12px;
+		color: #666;
+		line-height: 15px;
+		text-align: left;
+
+		.copyright {
+			padding: 18px 15px 0;
+			color: #777;
+			letter-spacing: -0.5px;
+		}
+		.business {
+			display: block;
+			position: relative;
+			padding: 31px 15px 0 15px;
+			font-size: 11px;
+			line-height: 16px;
+		}
+		.business > dt {
+			color: #999;
+		}
+		.business > dd {
+			display: block;
+			overflow: hidden;
+			margin-top: -16px;
+			padding-left: 114px;
+			color: #555;
+		}
+		.business:after {
+			position: absolute;
+			top: 18px;
+			height: 0;
+			left: 15px;
+			right: 15px;
+			border-bottom: 1px solid #dcdcdc;
+			content: '';
+		}	
+
+	}
+
+	.rules_wrap {
+		position: relative;
+		padding: 10px 10px 10px 17px;
+
+		.link {
+			@extend %ico_arr;
+
+			display: inline-block;
+			padding-right: 6px;
+			background-position: 100% 7px;
+			font-size: 11px;
+			color: #333;
+			line-height: 20px;
+		}
+		&:after {
+			position: absolute;
+			bottom: -1px;
+			left: 17px;
+			right: 17px;
+			border-bottom: 1px solid #dcdcdc;
+			content: '';
+		}	
+
+	}
+
+	//고객센터, address
+	.footer_address_wrap {
+		padding: 19px 0 17px;
+		background-color: #f2f3f4;
+		font-size: 11px;
+		line-height: 14px;
+		color: #999;
+		text-align: center;
+
+		.item {
+			display: inline-block;
+			margin: 0 2px;
+		}
+		.link {
+			color: #999;
+		}
+		.report {
+			position: relative;
+			padding-left: 9px;
+		}
+		.report:before {
+			display: inline-block;
+			position: absolute;
+			top: 2px;
+			left: 0;
+			width: 1px;
+			height: 9px;
+			background-color: #d9d9d9;
+			content: '';
+		}
+		.corporation {
+			display: block;
+			padding-top: 5px;
+		}
+		.corporation .link {
+			font-family: Helvetica;
+			font-size: 11px;
+		}
+
+	}
+}
+

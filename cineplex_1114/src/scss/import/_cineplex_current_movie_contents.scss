@@ -1,0 +1,331 @@
+@charset "UTF-8";
+
+/* _cineplex_current_movie_contents.scss */
+
+[class^=ico_rank] {
+	@extend %sp_ico;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	padding: 2px 13px 0 0;
+	font-size: 12px;
+	color: #fff;
+	font-family: HelveticaNeue-Medium,Helvetica,sans-serif;
+	letter-spacing: -1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+[class^=ico_grade] {
+	@extend %sp_ico;
+
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin: 0 4px 0 0;
+	vertical-align: -3px;
+}
+
+
+/* content */
+/*영화 예매 리스트 */
+.movie {
+	
+	/* item */
+	.item {
+		position: relative;
+		border-bottom: 1px solid #e3e3e3;
+
+		&_inner {
+			position: relative;
+			padding: 13px 10px;
+		}
+
+	}
+	.item_inner {
+		@extend %clearfix;
+	}
+
+	/* poster */
+	.poster {
+		float: left;
+		position: relative;
+		margin-right: 15px;
+		text-align: center;
+		vertical-align: middle;
+
+		.link {
+			display: inline-block;
+		}
+		.ico_rank {
+			background-position: 0 -130px;
+		}
+		.ico_rank_top {
+			background-position: 0 -90px;
+		}
+
+	}
+
+	/* exp */
+	.exp {
+		overflow: hidden;
+
+		.link {
+			display: block;
+		}
+		.str {
+			vertical-align: top;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 16px;
+
+		}
+		.str .txt {
+			font-weight: normal;
+			color: #666;
+		}
+		.br {
+			display: inline-block;
+			overflow: hidden;
+			width: 1px;
+			height: 10px;
+			margin: 0 3px 0 2px;
+			background: #dedede;
+		}
+
+		//제목
+		.subject {
+			overflow: hidden;
+			width: 100%;
+			line-height: 1em;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 16px;
+		}	
+		.ic1001001 {
+			width: 26px;
+			background-position: 0 -420px;
+		}
+		.ic1001002 {
+			background-position: 0 -440px;
+		}
+
+		.ic1001003 {
+			background-position: 0 -460px;
+		}
+
+		.ic1001004 {
+			width: 26px;
+			background-position: 0 -480px;
+		}
+
+		//별점, 등급
+		.status {
+			overflow: hidden;
+			width: 100%;
+			margin: 4px 0 2px;
+			line-height: 1em;
+			vertical-align: top;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		.rate { 
+			@extend %sp_movie;
+
+			display: inline-block;
+			position: relative;
+			top: 2px;
+			width: 12px;
+			height: 12px;
+			margin-right: -1px;
+			text-align: left;
+			background-position: -120px -40px;
+		}
+		.rate_mask {
+			@extend %sp_movie;
+
+			display: inline-block;
+			width: 12px;
+			margin-right: -1px;
+			overflow: hidden;
+			height: 100%;
+			background-position: -120px -10px;
+		}
+		.rate_mask img {
+			display: block;
+			height: 100%;
+			width: 12px;
+			margin-right: -1px;
+		}
+
+		// 영화 정보
+		.info {
+			display: inline-block;
+			overflow: hidden;
+			width: 100%;
+			margin-top: -1px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 14px;
+			line-height: 18px;
+			color: #666;
+		}
+
+		// 예매, 다운로드 버튼
+		.btn_wrap {
+			margin-top: 5px;
+		}
+		.btn {
+			@include border-radius(2px);
+
+			font-family: AppleSDGothicNeo-Medium,Helvetica,sans-serif;
+			display: inline-block;
+			height: 27px;
+			line-height: 27px;
+			overflow: hidden;
+			background-color: #ef5151;
+			font-size: 13px;
+			color: #fff;
+			text-align: center;
+			vertical-align: middle;
+			white-space: nowrap;
+			padding: 0 10px;		
+		}
+	}
+}
+
+/* 영화 페이징 */
+.page {
+	padding: 15px 0 10px;
+	border-bottom: none;
+	position: relative;
+	margin-top: -1px;
+	border-top: solid 1px #e0e0e0;
+	text-align: center;
+
+	.btn_wrap {
+		display: inline-block;
+		overflow: hidden;
+		padding: 9px 18px 9px 17px;
+		border: 1px solid #bbb;
+		background: #f0f0f0;
+		background: -webkit-gradient(linear,0 0,0 100%,from(#fafafa),color-stop(.05,#fbfbfb),to(#f0f0f0));
+		font-size: 0;
+		vertical-align: top;
+		-webkit-box-shadow: inset 0 1px #fefefe;
+		box-shadow: inset 0 1px #fefefe;
+		-webkit-appearance: none;
+	}
+	.btn {
+		@extend %u_pg3;
+
+		display: block;
+		overflow: hidden;
+		width: 9px;
+		height: 14px;
+		background-size: 20px 14px;	
+		color: transparent;
+
+		&.prev {
+			background-position: 0 0;
+		}
+		&.next {
+			background-position: -11px 0;
+		}
+
+	}
+
+	.page_wrap {
+		display: inline-block;
+		padding: 0 3px 0 2px;
+
+		.link {
+			display: inline-block;
+			margin-right: -1px;
+			vertical-align: top;
+			padding: 3px 3px 4px;
+			border: solid 1px #e2e2e2;
+			background-color: #fefefe;
+			font: 13px;
+			line-height: 25px; 
+			font-family: HelveticaNeue;
+			min-width: 26px;	
+			color: #999;		
+		}
+		.now {
+			border-color: #32cb00;
+			color: #32a800;
+		}
+
+	}
+}
+
+
+/* 소셜 플러그인 */
+.plugin {
+	
+	.spi_wrap {
+		margin: 20px auto;
+		max-width: 308px;
+		text-align: center;
+
+		.spi {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.link {
+			@extend %sp_spi;
+		}
+		.spug {
+			font-size: 0;
+			text-align: left;
+			white-space: nowrap;
+		}
+		.spug a:first-child {
+			margin-left: 0;
+		}
+		.spug a {
+			display: inline-block;
+			overflow: hidden;
+			width: 34px;
+			height: 34px;
+			margin-left: 5px;
+			color: rgba(0,0,0,0);
+		}
+		.sns_blog {
+			background-position: 0 -150px;
+		}
+		.sns_cafe {
+			background-position: -40px -150px;
+		}
+		.sns_bookmark {
+			background-position: -120px -150px;
+		}
+		.sns_memo {
+			background-position: -200px -190px;
+		}
+		.sns_pholar {
+			background-position: -160px -150px;
+		}
+		.sns_kakaotalk {
+			background-position: -200px -150px;
+		}
+		.sns_band {
+			background-position: 0 -190px;
+		}
+		.sns_share {
+			width: 32px;
+			height: 32px;
+			background-position: -120px -190px;
+			border: 1px solid #dedede;
+			background-color: #fff;
+		}
+
+	}
+}
+
+

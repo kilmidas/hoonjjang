@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/* _cineplex_seat_reservation_naver.scss */
+
+.nc {
+	display: none;
+}
+
+/* 좌석 선택 */
+.selsit {
+	overflow: hidden;
+	border-bottom: 1px solid #dedfe4;
+
+	dt {
+		float: left;
+		margin: 12px 0 12px 15px;
+		padding-right: 12px;
+		border-right: 1px solid #dfe0e5;
+		color: #8c8ea5;
+		font-family: helvetica;
+		font-size: 20px;
+		line-height: 22px;
+
+		.sel {
+			color: #e80707;
+		}
+
+		strong {
+			font-weight: normal;
+		}
+	}
+
+	dd { 
+		padding-right: 10px;
+
+		p {
+			padding: 13px 0 0 70px;
+			color: #3e3f51;
+			font-size: 12px;
+			letter-spacing: -1px;
+		}
+	}
+}
+.selsit .sitli {
+  margin-top: 5px;
+
+	li {
+		float: left;
+		margin-left: 9px;
+
+		a {
+		  display: inline-block;
+		  width: 2.79em;
+		  padding: 0 0.36em;
+		  background: url(https://ssl.pstatic.net/static/m/movie/im/ib.png) no-repeat 34px -1127px;
+		  color: #3E3F51;
+		  font-size: 1.07em;
+		  font-weight: bold;
+		  line-height: 23px;
+		}
+	}
+}
+
+.seat {
+  margin: 5px 10px 9px;
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border: 0;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: helvetica, sans-serif;
+
+    caption {
+      padding-bottom: 5px;
+      background: url(https://ssl.pstatic.net/static/m/movie/im/ib.png) no-repeat 50% -1178px;
+      color: #9496A9;
+      font-family: helvetica;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    tr {
+    	display: table-row;
+    	vertical-align: inherit;
+      	border: none;
+    }
+    td {
+      height: 14px;
+      border: 1px solid #fff;
+
+      &.on {
+        border: 1px solid #3c4674 !important;
+        background: #6F7DC0 url(https://ssl.pstatic.net/static/m/movie/im/bg_sit.gif) repeat-x 0 0;
+      }
+      &.dim {
+        border: 1px solid #cacbd9 !important;
+        background-color: #E3E4EC;
+      }
+      &.sel {
+        border: 1px solid #c73002 !important;
+        background: #FF4210 url(https://ssl.pstatic.net/static/m/movie/im/bg_sit.gif) repeat-x 0 -42px;
+      }
+      a {
+        display: block;
+        width: 100%;
+        height: 12px;
+      }
+    }
+  }
+}
+
+/* reservation button */
+
+.revbt {
+  clear: both;
+  overflow: hidden;
+  padding: 0.43em 0.71em;
+  border-top: 1px solid #676877;
+  border-bottom: 1px solid #676877;
+  background-color: #838495;
+  div {
+    float: left;
+    width: 50%;
+  }
+  .bt {
+    display: block;
+    height: 32px;
+    border: 1px solid #383c54;
+    background: #46465D url(https://ssl.pstatic.net/static/m/movie/im/sp_bg.png) repeat-x 0 -227px;
+    color: #fff;
+    font-size: 1.07em;
+    line-height: 32px;
+    text-align: center;
+    -webkit-border-radius: 2px;
+  }
+  .pv .bt {
+    margin-right: 2px;
+  }
+  .nx .bt {
+    margin-left: 2px;
+  }
+  .bt {
+    &.dim {
+      border: 1px solid #5f6175 !important;
+      background: #646579 url(https://ssl.pstatic.net/static/m/movie/im/sp_bg.png) repeat-x 0 -389px !important;
+      color: #9fa0b1 !important;
+    }
+    &.on {
+      border: 1px solid #4b4c65 !important;
+      background: #FF2711 url(https://ssl.pstatic.net/static/m/movie/im/sp_bg.png) repeat-x 0 -308px !important;
+      color: #fff !important;
+    }
+  }
+  .revc {
+    padding-left: 14px;
+    background: url(https://ssl.pstatic.net/static/m/movie/im/ib.png) no-repeat 0 -947px;
+  }
+}
