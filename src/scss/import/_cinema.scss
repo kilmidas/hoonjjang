@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+/*_cinema.scss */
+.content.cinema {
+	@include bottom_height(18px);
+}
+//cinema content
+.select_wrap.cinema {
+	overflow: hidden;
+
+	.select_inner {
+		position: relative;
+		margin: 18px 14px;
+		border: 2px solid #b1b1b1;
+		font-weight: bold;
+
+		&:before {
+			@include get-sprite('arr_down_01', $sp_icon);
+
+			position: absolute;
+		    top: 19px;
+		    right: 9px;
+		    content: '';
+		}		
+	    .label {
+	    	position: absolute;
+	    	top: 11px;
+	    	width: 100%;
+	    	display: block;
+	    	text-align: left;
+	    	text-indent: 8px;
+	    }
+		.select {
+			width: 100%;
+			line-height: normal;
+			font-family: inherit;
+			padding: 11px 10px 12px;
+			border: 0;
+			opacity: 0;
+			-webkit-appearance: none; 
+			-moz-appearance: none;
+			appearance: none;
+		}
+	}
+}
+
+.cinema_list {
+	@include clearfix;
+
+	padding: 18px 4px 0 14px;
+	border-top: 1px solid #c7c9cf;
+
+	&:after {
+		display: block;
+		content: '';
+		margin-top: 18px;
+	}
+	.item + .item {
+		margin-top: 15px;
+	}
+
+	.item_inner {
+		@include clearfix;
+
+	    margin-right: 42px;
+
+	    .link {
+	    	display: block;
+	    }
+		.title {
+			display: block;
+			padding: 5px 0 15px;
+		}
+		.title .txt {
+			@include ellipsisMulti;
+
+			height: 40px;
+			line-height: 20px;	
+			font-weight: bold;
+			text-align: left;	
+		}
+	}
+
+	.bookmark {
+		display: block;
+		float: right;
+		
+		.link {
+			display: block;
+			content: '';
+			padding: 10px 10px;	
+		}
+
+		.link:before {
+			@include pseudo_img('boomark_off', $sp_icon);
+		}
+	}
+
+	.item.on .link:before {
+		@include get-sprite('boomark_on', $sp_icon);	
+	}
+}
+
+.cinema_system_wrap {
+
+	.cinema_system {
+
+		.link.menu {
+			display: block;
+			position: relative;
+			padding: 17px 14px 16px;
+			background-color: #e2e2e2;
+		}
+		.link.menu ~ .link.menu {
+			margin-top: 10px;
+		}
+		.link.menu:before {
+			@include pseudo_img('arr_down_02', $sp_icon);
+
+			position: absolute;
+			right: 14px;
+			top: 21px;
+		}
+		.link.menu.on:before {
+			@include get-sprite('arr_up_02', $sp_icon);
+		}
+	}
+	.cinema_system .cinema_list_wrap {
+		position: relative;
+		border: none;
+	}
+	.cinema_system .pg {
+		line-height: 0;
+		text-align: center;
+
+		.pg_num_area {
+			margin: -8px 0 18px;
+		}
+		.pg_num_area .pg_num {
+			@include border-radius(4px);
+
+		    
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+		    margin-left: 6px;
+		    vertical-align: top;
+		    font-size: 0;
+		    line-height: 0;
+		    background-color: #999999;
+		}
+		.pg_num_area .pg_num:first-child {
+		    margin: 0;
+		}
+		.pg_num_area .pg_num.pg_num_on {
+		    background-color: #263147;
+		}	
+	}
+}

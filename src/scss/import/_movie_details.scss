@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+/*_movie_details.scss */
+.content.detail {
+	overflow: hidden;
+   	min-height: 100%;
+   	margin-bottom: -86px;
+}
+//movie_details content
+.common_info_type.detail {
+
+	.list {
+		margin-top: 5px;
+		font-size: 11px;
+		line-height: 15px;
+	}
+	.item .txt {
+		display: inline-block;
+		font-weight: bold;
+		width: 60px;
+	}
+}
+
+.detail_info_wrap {
+	padding: 18px 14px 0;
+
+	&:after {
+		display: block;
+		height: 100px;
+		content: '';
+	}
+	.list {
+		font-size: 11px;
+		margin-top:-3px;
+
+		.title {
+			font-weight: bold;
+		}
+		.title ~ .title {
+			margin-top: 10px;
+		}
+		.exp {
+			margin-top: 6px;
+			color: #858585;
+		}
+		.exp.synopsis {
+			@include ellipsisMulti(8);
+
+			line-height: 15px;
+		}
+	}
+	&.open .exp.synopsis {
+		display: block;
+		text-overflow: clip;
+	}
+	.more_wrap {
+		margin-top: 18px;
+		padding-top: 7px;
+		border-top: 1px solid #c7c9cf;
+
+		.link {
+			display: block;
+			padding: 10px 0;
+			font-size: 13px;
+			line-height: 11px;
+			font-weight: bold;
+			text-align: center;		
+			color: #858585;
+		}
+		.link.close {
+			display: none;
+		}
+		.link.close:after {
+			@include pseudo_img('arr_up_01', $sp_icon);
+
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+		.link.more:after {
+			@include pseudo_img('arr_down_01', $sp_icon);
+
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+	}
+	&.open .link.close {
+		display: block;
+	}
+	&.open .link.more {
+		display: none;
+	}
+}
+
+
+.btn_type_bottom.detail {
+	position: relative;
+	padding-top: 30px;
+	border: 0;
+	background-color: transparent;
+
+	.btn_inner {
+		float: left;
+		width: 50%;
+	}
+	.link.share {
+		margin: 0 2px 0 0;
+		background-color:#00c43d;
+	}
+	.link.buy {
+		margin: 0 0 0 2px;
+	}
+}
+
+.layer_pop_type.detail{
+
+	.share_wrap {
+		@include transform(translateY(-50%));
+
+		position: fixed;
+		top: 50%;
+		right: 0;
+		left: 0;
+		text-align: center;
+		margin: 0 14px;
+
+		.list {
+			@include border-radius(2px);
+
+			font-size: 17px;
+			font-weight: bold;
+			line-height: 18px;
+			color: #000;
+			background-color: #fff;
+
+			.item .link {
+				display: block;
+				padding: 17px 0;
+			}
+			.item + .item {
+				border-top: 1px solid #dbdbdb;
+			}
+			.item.close_btn {
+				padding: 5px;
+				border-top: 1px solid #dbdbdb;
+			}
+			.item.close_btn .link {
+				padding: 12px 0;
+				background-color: #4a505e;
+				color: #fff;
+			}
+		}
+	}
+}

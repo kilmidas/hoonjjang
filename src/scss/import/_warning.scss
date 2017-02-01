@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*_warning.scss */
+.content.warning {
+	overflow: hidden;
+   	min-height: 100%;
+   	margin-bottom: -72px;
+}
+//warning content
+.center_wrap.warning {
+	padding: 83px 0;
+	text-align: center;
+	color: #858585;
+
+	&:before {
+		@include pseudo_img('available', $sp_icon);
+	}
+	.title {
+		font-size: 17px;
+		line-height: 15px;
+		margin-top: 19px;
+	}
+	.exp {
+		font-size: 13px;
+		line-height: 18px;
+		margin-top: 15px;
+	}
+}

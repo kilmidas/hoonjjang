@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+/*_payment.scss */
+
+//payment content
+.content.payment {
+	overflow: hidden;
+   	min-height: 100%;
+   	margin-bottom: -72px;
+}
+.common_info_type.payment {
+
+	.time {
+		margin-top: 2px;
+		font-size: 11px;
+		font-weight: bold;
+	}
+	.theatre, .seat {
+		font-size: 11px;
+	}
+	.theatre {
+		margin-top: 7px;
+	}
+	.seat {
+		margin-top: 2px;
+	}
+}
+
+.price_wrap {
+	padding: 18px 14px;
+	margin-bottom: 200px;
+
+	.item {
+		@include clearfix;
+
+		color: #858585;
+		line-height: 12px;
+
+		& + .item {
+			margin-top: 18px;
+		}
+		.txt {
+			float: left;
+			width: 65%;
+		}
+		.num {	
+			text-align: right;
+		}
+		&.total {
+			border-top: 1px solid #c7c9cf;
+			font-weight: bold;
+			color: #222222;
+		}
+		&.total:before {
+			display: block;
+			content: '';
+			margin-top: 18px;
+		}
+	}
+}
+
+.btn_type_bottom.payment {
+	position: relative;
+
+	.btn_inner {
+		float: left;
+		width: 50%;
+	}
+	.link.cancle {
+		margin: 0 2px 0 0;
+		background-color:#858585;
+	}
+	.link.pay {
+		margin: 0 0 0 2px;
+	}	
+
+}

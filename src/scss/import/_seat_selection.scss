@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+/*_movie_details.scss */
+.content.seat_selection {
+	display:flex;
+	flex-direction:column;
+	height:100%;
+	overflow: hidden;
+}
+//movie_details content
+.seat_type_wrap {
+	padding: 0 13px;
+	background-color: #464c69;
+
+	.list {
+		width: 100%;
+		font-size: 11px;
+		font-weight: bold;
+		color: #fff;
+	}
+	.item {
+		float: left;
+		width: 25%;
+		text-align: center;
+	}
+	.item:before {
+		margin-top: 10px;
+	}
+	.item:nth-child(1n+5) {
+		&:before {
+			margin-top: 1px;
+		}
+		.txt.amount {
+			margin-bottom: 10px;
+		}
+	}
+	.txt.amount {
+		margin: -2px 0 8px;
+	}
+	@for $i from 1 through 6 {
+		.single_0#{$i}:before {
+			@include pseudo_img('seat_single_type0#{$i}', $sp_icon);
+		}
+		.couple_0#{$i}:before {
+			@include pseudo_img('seat_couple_type0#{$i}', $sp_icon);
+		}		
+	}
+}
+
+.screen_area_wrap {
+	position: relative;
+	flex: 1;
+	overflow-y:scroll;
+	-webkit-text-size-adjust:auto;
+	background-color: #eeeeee;
+
+	.seat {
+		padding: 14px 0 20px;
+	}
+}
+table.seat_type {
+	position: relative;
+	margin: 64px 0 0 -3px;
+	padding: 0 14px;
+	border-collapse: separate;
+	border: 0;
+	text-align: center;
+
+	caption {
+		position:absolute;
+		display: inline-block;
+		left: 0;
+		right: 0;
+		top: -57px;
+		font-size: 20px;
+		color: #909090;
+		font-weight: normal;
+		text-decoration: underline;
+	}
+	 td a {
+	 	position: relative;
+	 	display: block;
+	 	width: 29px;
+		height: 29px;
+		margin: 1px 0 0 1px;
+		line-height: 29px;
+		font-size: 11px;
+		color: #fff;
+		background-color: #bbbbbb;
+	}
+	$type_color: (type_01:#dfbb16, type_02:#29ad1f, type_03:#4aa9d1, type_04:#9f72f9, type_05:#eb7501, type_06:#e84545);
+	@each $key, $value in $type_color {
+		td.#{$key} a {
+			background-color: $value;
+		}
+	}
+	td.on a {
+		font-weight: bold;
+		background-color: #464c69;
+	}
+	td.on a:after {
+		display: inline-block;
+		position: absolute;
+		top: 1px;
+		right: 1px;
+		content: '';
+		width: 0;
+		height: 0;
+		border-top: 6px solid #fff;
+		border-left: 6px solid transparent;
+		vertical-align: top;
+		line-height: 0;
+	}
+	td.empty {
+		a {
+			display: none;
+		}
+	}
+	td.empty:before {
+		display: block;
+		content: '';
+	 	width: 29px;
+		height: 29px;
+		margin: 1px 0 0 1px;
+		background-color: transparent;
+	}
+	td[colspan="2"] a {
+		width: 60px;
+	}
+}

@@ -1,0 +1,21 @@
+// Sprites Map
+$sp_thum: (
+	name: 'sp_thum',
+	width: 382px,
+	height: 362px,
+	image: '../img/sprite/sp_thum.png',
+	sprites: (
+	movie_poster: (
+			offset-x: 0px,
+			offset-y: 0px,
+			width: 258px,
+			height: 362px,
+		),
+		movie_thum: (
+			offset-x: -262px,
+			offset-y: 0px,
+			width: 120px,
+			height: 170px,
+		),
+	)
+);

@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+/*_complete.scss */
+.content.complete {
+	overflow: hidden;
+   	min-height: 100%;
+   	margin-bottom: -72px;
+}
+//complete content
+.center_wrap.complete {
+	padding: 143px 0;
+	text-align: center;
+	color: #858585;
+
+	&:before {
+		@include pseudo_img('complete_mark', $sp_icon);
+	}
+	.title {
+		font-size: 17px;
+		line-height: 15px;
+		margin-top: 24px;
+	}
+	.exp {
+		font-size: 13px;
+		line-height: 18px;
+		margin-top: 18px;
+	}
+}

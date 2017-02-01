@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>Major Cineplex</title>
+<link rel="stylesheet" href="./css/cineplex.css">
+<!-- [D] 마크업 확인용 스크립트 -->
+<script src="js/jquery.min.js"></script>
+<script src="js/active.js"></script>
+<!-- //[D] 마크업 확인용 스크립트 -->
+</head>
+<body>
+<h1 class="blind">Major Cineplex</h1>
+<!-- 본문 바로가기 -->
+<div class="u_skip"><a href="#content">본문 바로가기</a></div>
+<!-- //본문 바로가기 -->
+
+<!-- content -->
+<div class="content seat_selection" id="content">
+<h2 class="blind">Seat Selection</h2>
+
+<!-- seat_type_wrap -->
+<div class="seat_type_wrap">
+	<h3 class="blind">seat type</h3>
+	<ul class="list">
+		<!-- [D]1인용 좌석(6종): 'single_01~06', 2인용 좌석(6종): 'couple_01~06' 클래스 추가 -->
+		<li class="item single_01">
+			<p class="txt amount">300 THB</p>
+		</li>
+		<li class="item single_03">
+			<p class="txt amount">350 THB</p>
+		</li>
+		<li class="item single_04">
+			<p class="txt amount">400 THB</p>
+		</li>
+		<li class="item couple_01">
+			<p class="txt amount">1,100 THB</p>
+		</li>
+		<li class="item couple_03">
+			<p class="txt amount">1,300 THB</p>
+		</li>	
+		<li class="item couple_06">
+			<p class="txt amount">1,500 THB</p>
+		</li>
+	</ul>
+</div>
+<!-- //seat_type_wrap -->
+
+
+<!-- screen_area_wrap -->
+<div class="screen_area_wrap">
+	<div class="seat">
+		<table class="seat_type">
+		<caption>SCREEN</caption>
+	    <tbody>
+
+	    	<tr>
+	    	<!-- [D] case1.좌석 표시 안함:	<td> 'empty' 클래스 추가		-->
+	    	<!-- [D] case2.좌석 선택 시:	<td> 'on' 클래스 추가			-->
+	    	<!-- [D] case3.좌석 종류:		<td> 'type01~06' 클래스 추가	-->
+	    	<!-- [D] case4.커플 좌석일 경우:	<td> colspan="2" 속성 추가		-->
+
+	    	<td class="on"></td>
+			<td class="empty"></td>
+			<td><a href="#">A03</a></td>
+	    	<td class="on"><a href="#">A04</a></td>
+			<td class="type_01"><a href="#">A05</a></td>
+			<td class="type_01"><a href="#">A06</a></td>
+	    	<td><a href="#">A07</a></td>
+			<td><a href="#">A08</a></td>
+			<td class="type_01"><a href="#">A09</a></td>
+			<td class="type_01"><a href="#">A10</a></td>
+	    	<td><a href="#">A11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_01"><a href="#">A12</a></td>
+			<td class="type_01"><a href="#">A13</a></td>
+	    	<td class="type_01"><a href="#">A14</a></td>
+			<td class="type_01"><a href="#">A15</a></td>
+			<td class="type_01"><a href="#">A16</a></td>
+	    	<td class="type_01"><a href="#">A17</a></td>
+			<td class="type_01"><a href="#">A18</a></td>
+			<td class="type_01"><a href="#">A19</a></td>
+			<td class="type_01"><a href="#">A20</a></td>
+			<td class="type_01"></td>	
+			<td class="type_01"></td>		
+			</tr>
+	    	<tr>
+	    	<td class="type_02"></td>
+			<td class="type_02"><a href="#">B02</a></td>
+			<td class="type_02"><a href="#">B03</a></td>
+	    	<td class="type_02"><a href="#">B04</a></td>
+			<td class="on"><a href="#">B05</a></td>
+			<td class="type_02"><a href="#">B06</a></td>
+	    	<td><a href="#">B07</a></td>
+			<td><a href="#">B08</a></td>
+			<td><a href="#">B09</a></td>
+			<td><a href="#">B10</a></td>
+	    	<td><a href="#">B11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_02"><a href="#">B12</a></td>
+			<td><a href="#">B13</a></td>
+	    	<td><a href="#">B14</a></td>
+			<td class="type_02"><a href="#">B15</a></td>
+			<td class="type_02"><a href="#">B16</a></td>
+	    	<td class="type_02"><a href="#">B17</a></td>
+			<td class="type_02"><a href="#">B18</a></td>
+			<td class="type_02"><a href="#">B19</a></td>
+			<td class="type_02"><a href="#">B20</a></td>	
+			<td class="type_02"><a href="#">B21</a></td>	
+			<td class="type_01"></td>		
+			</tr>
+	    	<tr>
+	    	<td class="type_03"><a href="#">C01</a></td>
+			<td class="type_03"><a href="#">C02</a></td>
+			<td class="type_03"><a href="#">C03</a></td>
+	    	<td class="type_03"><a href="#">C04</a></td>
+			<td><a href="#">C05</a></td>
+			<td><a href="#">C06</a></td>
+	    	<td><a href="#">C07</a></td>
+			<td><a href="#">C08</a></td>
+			<td><a href="#">C09</a></td>
+			<td><a href="#">C10</a></td>
+	    	<td><a href="#">C11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_03"><a href="#">C12</a></td>
+			<td><a href="#">C13</a></td>
+	    	<td><a href="#">C14</a></td>
+			<td class="type_03"><a href="#">C15</a></td>
+			<td class="type_03"><a href="#">C16</a></td>
+	    	<td class="type_03"><a href="#">C17</a></td>
+			<td class="type_03"><a href="#">C18</a></td>
+			<td class="type_03"><a href="#">C19</a></td>
+			<td class="type_03"><a href="#">C20</a></td>
+			<td class="type_03"><a href="#">C21</a></td>
+			<td class="type_01"><a href="#">C22</a></td>		
+			</tr>
+	    	<tr>
+	    	<td class="type_04"><a href="#">D01</a></td>
+			<td class="type_04"><a href="#">D02</a></td>
+			<td class="type_04"><a href="#">D03</a></td>
+	    	<td class="type_04"><a href="#">D04</a></td>
+			<td><a href="#">D05</a></td>
+			<td><a href="#">D06</a></td>
+	    	<td><a href="#">D07</a></td>
+			<td><a href="#">D08</a></td>
+			<td><a href="#">D09</a></td>
+			<td><a href="#">D10</a></td>
+	    	<td><a href="#">D11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_04"><a href="#">D12</a></td>
+			<td><a href="#">D13</a></td>
+	    	<td><a href="#">D14</a></td>
+			<td class="type_04"><a href="#">D15</a></td>
+			<td class="type_04"><a href="#">D16</a></td>
+	    	<td class="type_04"><a href="#">D17</a></td>
+			<td class="type_04"><a href="#">D18</a></td>
+			<td class="type_04"><a href="#">D19</a></td>
+			<td class="type_04"><a href="#">D20</a></td>
+			<td class="type_04"><a href="#">D21</a></td>
+			<td class="type_01"><a href="#">D22</a></td>			
+			</tr>
+
+	    	<tr>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			</tr>
+	    	<tr>
+	    	<td class="type_02"><a href="#">B01</a></td>
+			<td class="type_02"><a href="#">B02</a></td>
+			<td class="type_02"><a href="#">B03</a></td>
+	    	<td class="type_02"><a href="#">B04</a></td>
+			<td class="on"><a href="#">B05</a></td>
+			<td class="type_02"><a href="#">B06</a></td>
+	    	<td><a href="#">B07</a></td>
+			<td><a href="#">B08</a></td>
+			<td><a href="#">B09</a></td>
+			<td><a href="#">B10</a></td>
+	    	<td><a href="#">B11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_02"><a href="#">B12</a></td>
+			<td><a href="#">B13</a></td>
+	    	<td><a href="#">B14</a></td>
+			<td class="type_02"><a href="#">B15</a></td>
+			<td class="type_02"><a href="#">B16</a></td>
+	    	<td class="type_02"><a href="#">B17</a></td>
+			<td class="type_02"><a href="#">B18</a></td>
+			<td class="type_02"><a href="#">B19</a></td>
+			<td class="type_02"><a href="#">B20</a></td>	
+			<td class="type_02"><a href="#">B21</a></td>	
+			<td class="type_01"><a href="#">B22</a></td>		
+			</tr>
+	    	<tr>
+	    	<td class="type_03"><a href="#">C01</a></td>
+			<td class="type_03"><a href="#">C02</a></td>
+			<td class="type_03"><a href="#">C03</a></td>
+	    	<td class="type_03"><a href="#">C04</a></td>
+			<td><a href="#">C05</a></td>
+			<td><a href="#">C06</a></td>
+	    	<td><a href="#">C07</a></td>
+			<td><a href="#">C08</a></td>
+			<td><a href="#">C09</a></td>
+			<td><a href="#">C10</a></td>
+	    	<td><a href="#">C11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_03"><a href="#">C12</a></td>
+			<td><a href="#">C13</a></td>
+	    	<td><a href="#">C14</a></td>
+			<td class="type_03"><a href="#">C15</a></td>
+			<td class="type_03"><a href="#">C16</a></td>
+	    	<td class="type_03"><a href="#">C17</a></td>
+			<td class="type_03"><a href="#">C18</a></td>
+			<td class="type_03"><a href="#">C19</a></td>
+			<td class="type_03"><a href="#">C20</a></td>
+			<td class="type_03"><a href="#">C21</a></td>
+			<td class="type_01"><a href="#">C22</a></td>		
+			</tr>
+	    	<tr>
+	    	<td class="type_04"><a href="#">D01</a></td>
+			<td class="type_04"><a href="#">D02</a></td>
+			<td class="type_04"><a href="#">D03</a></td>
+	    	<td class="type_04"><a href="#">D04</a></td>
+			<td><a href="#">D05</a></td>
+			<td><a href="#">D06</a></td>
+	    	<td><a href="#">D07</a></td>
+			<td><a href="#">D08</a></td>
+			<td><a href="#">D09</a></td>
+			<td><a href="#">D10</a></td>
+	    	<td><a href="#">D11</a></td>
+	    	<td class="empty"></td>
+			<td class="type_04"><a href="#">D12</a></td>
+			<td><a href="#">D13</a></td>
+	    	<td><a href="#">D14</a></td>
+			<td class="type_04"><a href="#">D15</a></td>
+			<td class="type_04"><a href="#">D16</a></td>
+	    	<td class="type_04"><a href="#">D17</a></td>
+			<td class="type_04"><a href="#">D18</a></td>
+			<td class="type_04"><a href="#">D19</a></td>
+			<td class="type_04"><a href="#">D20</a></td>
+			<td class="type_04"><a href="#">D21</a></td>
+			<td class="type_01"><a href="#">D22</a></td>			
+			</tr>
+
+	    	<tr>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+	    	<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			<td class="empty"></td>
+			</tr>
+
+	    	<tr>
+	    	<td colspan="2" class="type_05 on"><a href="#">E01/02</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_05"><a href="#">E03/04</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2"><a href="#">E05/06</a></td>
+			<td class="empty"></td>
+			<td colspan="2"><a href="#">E07/08</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_05 on"><a href="#">E09/10</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2"><a href="#">E11/12</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2" class="type_05"><a href="#">E13/14</a></td>
+			<td class="empty"></td>			
+			<td colspan="2" class="type_05"><a href="#">E15/16</a></td>
+			</tr>
+    		<tr>
+	    	<td colspan="2" class="type_06"><a href="#">F01/02</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06 on"><a href="#">F03/04</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06"><a href="#">F05/06</a></td>
+			<td class="empty"></td>
+			<td colspan="2"><a href="#">F07/08</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06"><a href="#">F09/10</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2" class="type_06"><a href="#">F11/12</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2"><a href="#">F13/14</a></td>
+			<td class="empty"></td>			
+			<td colspan="2" class="type_06"><a href="#">F15/16</a></td>
+			</tr>
+
+	    	<tr>
+	    	<td colspan="2" class="type_05 on"><a href="#">E01/02</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_05"><a href="#">E03/04</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2"><a href="#">E05/06</a></td>
+			<td class="empty"></td>
+			<td colspan="2"><a href="#">E07/08</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_05 on"><a href="#">E09/10</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2"><a href="#">E11/12</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2" class="type_05"><a href="#">E13/14</a></td>
+			<td class="empty"></td>			
+			<td colspan="2" class="type_05"><a href="#">E15/16</a></td>
+			</tr>
+    		<tr>
+	    	<td colspan="2" class="type_06"><a href="#">F01/02</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06 on"><a href="#">F03/04</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06"><a href="#">F05/06</a></td>
+			<td class="empty"></td>
+			<td colspan="2"><a href="#">F07/08</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06"><a href="#">F09/10</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2" class="type_06"><a href="#">F11/12</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2"><a href="#">F13/14</a></td>
+			<td class="empty"></td>			
+			<td colspan="2" class="type_06"><a href="#">F15/16</a></td>
+			</tr>
+
+	    	<tr>
+	    	<td colspan="2" class="type_05 on"><a href="#">E01/02</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_05"><a href="#">E03/04</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2"><a href="#">E05/06</a></td>
+			<td class="empty"></td>
+			<td colspan="2"><a href="#">E07/08</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_05 on"><a href="#">E09/10</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2"><a href="#">E11/12</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2" class="type_05"><a href="#">E13/14</a></td>
+			<td class="empty"></td>			
+			<td colspan="2" class="type_05"><a href="#">E15/16</a></td>
+			</tr>
+    		<tr>
+	    	<td colspan="2" class="type_06"><a href="#">F01/02</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06 on"><a href="#">F03/04</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06"><a href="#">F05/06</a></td>
+			<td class="empty"></td>
+			<td colspan="2"><a href="#">F07/08</a></td>
+			<td class="empty"></td>
+	    	<td colspan="2" class="type_06"><a href="#">F09/10</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2" class="type_06"><a href="#">F11/12</a></td>
+	    	<td class="empty"></td>
+			<td colspan="2"><a href="#">F13/14</a></td>
+			<td class="empty"></td>			
+			<td colspan="2" class="type_06"><a href="#">F15/16</a></td>
+			</tr>						
+		</tbody>
+		</table>
+	</div>
+
+</div>
+<!-- //screen_area_wrap -->
+
+
+<!-- btn_wrap -->
+<div class="btn_type_bottom">
+	<div class="btn_inner">
+		<a href="#" class="link" role="button">Confirm</a>
+	</div>
+</div>
+<!-- //btn_wrap -->
+
+
+</div>
+<!-- //content -->
+
+
+
+
+</body>
+</html>
